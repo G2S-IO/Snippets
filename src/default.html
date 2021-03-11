@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        /* Informational */
+        .g2s-alert-i {
+            /* Color: Aqua (blue) */
+            background-color: #0096FF;
+        }
+
+        /* Successful */
+        .g2s-alert-s {
+            /* Color: Moss (green) */
+            background-color: #009051;
+        }
+
+        /* Warning */
+        .g2s-alert-w {
+            /* Color: Tangerine (orange) */
+            background-color: #FF9300;
+        }
+
+        /* Error */
+        .g2s-alert-e {
+            /* Color: Maraschino (red) */
+            background-color: #FF2600;
+        }
+
+        /* Style the g2s-alert by finding all elements with a class attribute starting with g2s-alert- */
+        [class^='g2s-alert-'] {
+            opacity: 1;
+            color: white;
+            padding: 16px;
+            border-radius: 0;
+            transition: opacity 0.5s;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Add spacing to the end of the title */
+        [class^='g2s-alert-'] .g2s-alert-txt {
+            margin-right: 6px;
+        }
+
+        /* Close button */
+        [class^='g2s-alert-'] .g2s-alert-close-btn {
+            color: white;
+            float: right;
+            line-height: 2;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: -7px;
+            padding: 0 10px 0 11px;
+            cursor: pointer;
+            border-radius: 50%;
+            text-decoration: none;
+        }
+
+        /* Close button hover */
+        [class^='g2s-alert-'] .g2s-alert-close-btn:hover {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="g2s-alert-i">
+        <a class="g2s-alert-close-btn">✕</a>
+        <strong class="g2s-alert-txt">
+            Info!
+        </strong>
+        This is an informational alert.
+    </div>
+
+
+    <script>
+        // Find all alert elements by looking for classes that start with "alert-"
+        document.querySelectorAll("[class*=g2s-alert-]").forEach(el => {
+            // Get the a element and add the on click event to close the alert
+            var a = el.querySelector("a");
+            if (a) a.onclick = closeAlert;
+        });
+
+        // Close the alert
+        function closeAlert() {
+            // 'this' is the <a> element so we need to get its parent and turn it off
+            var el = this.parentElement;
+            if (el) {
+                // Start fading out by setting the opacity to 0
+                el.style.opacity = "0";
+                // Turn element off after a short delay so we see the fade out
+                setTimeout(function () { el.style.display = "none"; }, 500);
+            }
+        }
+    </script>
+</body>
+
+</html>
