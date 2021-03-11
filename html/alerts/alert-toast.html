@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        /* Alert */
+        .g2s-alert {
+            opacity: 1;
+            padding: 16px;
+            border-radius: 0;
+            color: white;
+            transition: opacity 0.5s;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Add spacing to the end of the title */
+        .g2s-alert .g2s-alert-txt {
+            margin-right: 6px;
+        }
+
+        /* Informational */
+        .g2s-alert.info {
+            /* Color: Aqua (blue) */
+            background-color: #0096FF;
+        }
+
+        /* Successful */
+        .g2s-alert.success {
+            /* Color: Moss (green) */
+            background-color: #009051;
+        }
+
+        /* Warning */
+        .g2s-alert.warn {
+            /* Color: Tangerine (orange) */
+            background-color: #FF9300;
+        }
+
+        /* Error */
+        .g2s-alert.error {
+            /* Color: Maraschino (red) */
+            background-color: #FF2600;
+        }
+
+        /* Close button */
+        .g2s-alert-close-btn {
+            float: right;
+            color: white;
+            cursor: pointer;
+            margin-top: -7px;
+            line-height: 2;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            padding: 0 10px 0 11px;
+            border-radius: 50%;
+            text-decoration: none;
+        }
+
+        /* Close button hover */
+        .g2s-alert-close-btn:hover {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="g2s-alert info">
+        <a class="g2s-alert-close-btn">✕</a>
+        <strong class="g2s-alert-txt">Info!</strong>This is an informational alert.
+    </div>
+
+    <script>
+        // Find all alert elements
+        document.querySelectorAll(".g2s-alert").forEach(el => {
+            // Get the a element and add the on click event to close the alert
+            var a = el.querySelector("a");
+            if (a) a.onclick = closeAlert;
+        });
+
+        // Close Alert
+        function closeAlert() {
+            // 'this' is the <a> element so we need to get its parent and turn it off
+            var el = this.parentElement;
+            if (el) {
+                // Start transition to 0
+                el.style.opacity = "0";
+                // Turn element off after transition time
+                setTimeout(function () { el.style.display = "none"; }, 500);
+            }
+        }
+    </script>
+</body>
+
+</html>
