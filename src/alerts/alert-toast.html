@@ -87,9 +87,9 @@
             // 'this' is the <a> element so we need to get its parent and turn it off
             var el = this.parentElement;
             if (el) {
-                // Start fading out by setting the opacity to 0
+                // Start transition to 0
                 el.style.opacity = "0";
-                // Turn element off after a short delay so we see the transition
+                // Turn element off after transition time
                 setTimeout(function () { el.style.display = "none"; }, 500);
             }
         }
