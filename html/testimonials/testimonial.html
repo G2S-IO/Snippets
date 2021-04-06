@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <style>
+        /* Testimonials */
+        .testimonial-txt {
+            margin: auto;
+            width: 100%;
+            padding: 32px 0;
+            font-size: 14px;
+            display: table;
+            min-height: 250px;
+            max-width: 1000px;
+            text-align: center;
+            user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Testimonial section */
+        .testimonial-txt .testimonial {
+            width: 100%;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        /* Testimonial image */
+        .testimonial-txt .testimonial img {
+            margin: auto;
+            border-radius: 50%;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-txt.img-pos-top .testimonial img {
+            display: block;
+        }
+
+        .testimonial-txt.img-pos-side .testimonial img {
+            vertical-align: middle;
+        }
+
+        /* Title */
+        .testimonial-txt .testimonial h2 {
+            margin: 6px;
+            margin-left: 16px;
+            margin-bottom: 16px;
+            font-size: 20px;
+            text-align: left;
+            display: inline-block;
+            font-style: italic;
+            vertical-align: middle;
+            color: black;
+        }
+
+        .testimonial-txt.img-pos-top .testimonial h2 {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* Description */
+        .testimonial-txt .testimonial p {
+            margin: 6px;
+            font-size: 18px;
+            text-align: center;
+            display: block;
+            color: black;
+        }
+
+        /* next/previous btns */
+        .testimonial-txt span {
+            padding: 32px;
+            line-height: 1;
+            font-size: 30px;
+            cursor: pointer;
+            display: table-cell;
+            vertical-align: middle;
+            color: rgb(0, 0, 0, .7);
+        }
+
+        /* load more btn */
+        .testimonial-txt .testimonial .read-more-btn {
+            margin: 6px;
+            padding: 6px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            color: black;
+        }
+
+        .testimonial-txt .testimonial .read-more-btn:hover {
+            color: grey;
+        }
+
+        /* Screen size responsive */
+        @media screen and (max-width:700px) {
+
+            /* Title */
+            .testimonial-txt .testimonial h2 {
+                font-size: 18px;
+            }
+
+            /* Description */
+            .testimonial-txt .testimonial p {
+                font-size: 14px;
+            }
+
+            /* next/previous btns */
+            .testimonial-txt span {
+                font-size: 10px;
+                padding: 16px;
+            }
+
+            /* load more btn */
+            .testimonial-txt .testimonial .read-more-btn {
+                font-size: 14px;
+            }
+
+        }
+    </style>
+
+
+    <div class="testimonial-txt img-pos-side">
+        <!-- Left arrow -->
+        <span onclick="nextTestimonial(this, false)">&#10094;</span>
+
+        <!-- Testimonial -->
+        <div class="testimonial">
+            <img src="https://g2s.io/imgs/default/image.jpg" alt="auto" loading="lazy" width="60" height="60">
+            <h2>
+                John Doe
+                <br>
+                Managing director
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                eget dolor. Aenean massa Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            </p>
+            <p class="read-more">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                eget dolor. Aenean massa Lorem ipsum dolor sit amet.
+            </p>
+            <a class="read-more-btn">Read More</a>
+        </div>
+        <!-- Testimonial -->
+        <div class="testimonial">
+            <h2>
+                Jane Doe
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                dolor.
+            </p>
+            <p class="read-more">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                dolor. Aenean massa. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+                eget dolor. Aenean massa Lorem ipsum dolor sit amet.
+            </p>
+            <a class="read-more-btn">Read More</a>
+        </div>
+
+        <!-- Right arrow -->
+        <span onclick="nextTestimonial(this, true)">&#10095;</span>
+    </div>
+
+
+    <script>
+        // Wait until the document has fully loaded
+        window.addEventListener('DOMContentLoaded', (e) => {
+            // Find all testimonials
+            var testimonialTxts = document.querySelectorAll(".testimonial-txt");
+            testimonialTxts.forEach(el => {
+                var testimonials = el.querySelectorAll(".testimonial");
+                for (var i = 0; i < testimonials.length; i++) {
+                    var t = testimonials[i];
+                    // leave first on, turn others off
+                    if (i > 0) t.style.display = "none";
+                    // Hide read more
+                    var readMore = t.querySelectorAll(".read-more");
+                    readMore.forEach(r => {
+                        r.style.display = "none";
+                    });
+                    // Set read more onclick event
+                    var rBtn = t.querySelector(".read-more-btn");
+                    if (rBtn) rBtn.setAttribute("onclick", "testimonialReadMore(this)");
+                }
+            });
+        });
+
+        // Display the next or previous testimonial.
+        function nextTestimonial(el, next) {
+            var testimonials = el.parentElement.querySelectorAll(".testimonial");
+            for (var i = 0; i < testimonials.length; i++) {
+                var t = testimonials[i];
+                if (t.style.display != "none") {
+                    t.style.display = "none";
+                    var index = 0;
+                    if (next) index = i < testimonials.length - 1 ? i + 1 : 0;
+                    else index = i > 0 ? i - 1 : testimonials.length - 1;
+                    testimonials[index].style.display = "table-cell";
+                    break;
+                }
+
+            }
+
+        }
+
+        // Display read more
+        function testimonialReadMore(el) {
+            var more = el.innerText.trim() == "Read More";
+            var readMore = el.parentElement.querySelectorAll(".read-more");
+            readMore.forEach(r => {
+                r.style.display = more ? "inline-block" : "none";
+            });
+            el.innerText = more ? "Read Less" : "Read More";
+        }
+    </script>
+</body>
+
+</html>
