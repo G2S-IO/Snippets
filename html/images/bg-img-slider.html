@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="snippet" content="snippets/head.html">
+
+    <style>
+        .bg-img-slider .bg-img-s-left-arrow,
+        .bg-img-slider .bg-img-s-right-arrow {
+            top: 50%;
+            padding: 16px;
+            margin-top: -27px;
+            color: white;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .bg-img-slider .bg-img-s-left-arrow:hover,
+        .bg-img-slider .bg-img-s-right-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .bg-img-slider .bg-img-s-right-arrow {
+            right: 20px;
+        }
+
+        .bg-img-slider .bg-img-s-left-arrow {
+            left: 20px;
+        }
+
+        .bg-img-slider {
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 96px 64px;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .bg-img-slider img {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: 2s;
+            position: absolute;
+            object-fit: cover;
+            -o-object-fit: cover;
+        }
+
+        .img-slider-img {
+            opacity: 0;
+        }
+
+        .img-slider-txt {
+            width: 100%;
+            opacity: 0;
+            position: relative;
+            transition: 1s;
+            top: 300px;
+            text-align: center;
+        }
+
+        .bg-img-slider img.bg-position-top {
+            object-position: top;
+            -o-object-position: top;
+        }
+
+        .bg-img-slider img.bg-position-center {
+            object-position: center;
+            -o-object-position: center;
+        }
+
+        .bg-img-slider img.bg-position-bottom {
+            object-position: bottom;
+            -o-object-position: bottom;
+        }
+
+        .bg-img-s-overlay {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .bg-img-s-txt-container {
+            margin: auto;
+            max-width: 1400px;
+            position: relative;
+        }
+
+        .bg-img-s-txt-container a {
+            text-decoration: none;
+        }
+
+        .bg-img-s-sep {
+            height: 1px;
+            width: 100px;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            background-color: white;
+        }
+
+        .bg-img-slider .bg-img-s-or {
+            padding: 0 16px;
+            color: white;
+            font-size: 30px;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .bg-img-slider .bg-img-s-contact {
+            margin: 0;
+            font-size: 40px;
+            display: block;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+        }
+
+        .bg-img-slider .bg-img-s-contact:hover {
+            color: lightgray;
+        }
+
+        .bg-img-slider span,
+        .bg-img-slider h1,
+        .bg-img-slider h2,
+        .bg-img-slider h3,
+        .bg-img-slider h4,
+        .bg-img-slider h5,
+        .bg-img-slider h6,
+        .bg-img-slider p,
+        .bg-img-slider a {
+            margin: 16px 0;
+            position: relative;
+        }
+
+        .bg-img-slider .bg-img-s-title {
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .bg-img-slider .bg-img-s-subtitle {
+            font-size: 20px;
+            color: white;
+            margin-top: 0;
+        }
+
+        .bg-img-slider span {
+            font-size: 20px;
+            color: white;
+            padding-right: 16px;
+        }
+
+        .bg-img-slider .bg-img-s-menu {
+            font-size: 20px;
+            color: white;
+            padding-right: 16px;
+            cursor: pointer;
+            display: inline;
+            text-decoration: none;
+        }
+
+        .bg-img-s-menu:hover {
+            color: lightgray;
+        }
+
+        .bg-img-s-align-center,
+        .bg-img-s-align-center .bg-img-s-menu {
+            text-align: center;
+        }
+
+        .bg-img-s-align-left,
+        .bg-img-s-align-left .bg-img-s-menu {
+            text-align: left;
+        }
+
+        .bg-img-s-align-right,
+        .bg-img-s-align-right .bg-img-s-menu {
+            text-align: right;
+        }
+
+        @media screen and (max-width: 700px) {
+            .bg-img-slider {
+                padding: 96px 16px;
+            }
+
+            .bg-img-slider .bg-img-s-title {
+                font-size: 30px;
+                color: white;
+            }
+
+            .bg-img-slider .bg-img-s-subtitle {
+                font-size: 20px;
+                color: white;
+            }
+
+            .bg-img-slider .bg-img-s-contact {
+                font-size: 20px;
+            }
+
+            .bg-img-slider .bg-img-s-menu,
+            .bg-img-slider .bg-img-s-right-arrow,
+            .bg-img-slider .bg-img-s-left-arrow {
+                display: none;
+            }
+
+        }
+
+        @media screen and (max-width: 310px) {
+            .bg-img-s-sep {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-img-slider bg-img-s-align-center">
+        <img class="img-slider-img fade bg-position-center" src="https://g2s.io/imgs/background.jpg" alt="auto"
+            auto-webp="true">
+        <img class="img-slider-img fade bg-position-center" src="https://g2s.io/imgs/background.jpg" alt="auto"
+            auto-webp="true">
+        <div class="bg-img-s-overlay"></div>
+        <div class="bg-img-s-right-arrow" onclick="nextImg()">&#x276F;</div>
+        <div class="bg-img-s-left-arrow" onclick="lastImg()">&#10094;</div>
+        <div class="bg-img-s-txt-container">
+            <div class="img-slider-txt" style="opacity: 0; display: block;">
+                <h3 class="bg-img-s-subtitle">Website Subtitle</h3>
+                <h2 class="bg-img-s-title">Website Title One</h2>
+
+                <a class="bg-img-s-menu" href="#0">Link 1</a><span class="bg-img-s-menu">|</span>
+                <a class="bg-img-s-menu" href="#0">Link 2</a><span class="bg-img-s-menu">|</span>
+                <a class="bg-img-s-menu" href="#0">Link 3</a>
+                <div style="padding-top:32px;"></div>
+                <a href="#0">
+                    <span class="bg-img-s-contact">Call Now: +(44) 0800 123 4567</span>
+                </a>
+                <div class="bg-img-s-sep"></div>
+                <span class="bg-img-s-or">OR</span>
+                <div class="bg-img-s-sep"></div>
+                <a href="#0">
+                    <span class="bg-img-s-contact">Get A Quote ➝</span>
+                </a>
+            </div>
+            <div class="img-slider-txt" style="position: absolute;">
+                <h3 class="bg-img-s-subtitle">Website Subtitle</h3>
+                <h2 class="bg-img-s-title">Website Title Two</h2>
+
+                <a class="bg-img-s-menu" href="#0">Link 1</a><span class="bg-img-s-menu">|</span>
+                <a class="bg-img-s-menu" href="#0">Link 2</a><span class="bg-img-s-menu">|</span>
+                <a class="bg-img-s-menu" href="#0">Link 3</a>
+                <div style="padding-top:32px;"></div>
+                <a href="#0">
+                    <span class="bg-img-s-contact">Call Now: +(44) 0800 123 4567</span>
+                </a>
+                <div class="bg-img-s-sep"></div>
+                <span class="bg-img-s-or">OR</span>
+                <div class="bg-img-s-sep"></div>
+                <a href="#0">
+                    <span class="bg-img-s-contact">Get A Quote ➝</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var imgs = document.querySelectorAll(".img-slider-img");
+        imgs[0].style.opacity = 1;
+
+        var leftArrow = document.querySelector(".bg-img-s-left-arrow");
+        var rightArrow = document.querySelector(".bg-img-s-right-arrow");
+
+        var txts = document.querySelectorAll(".img-slider-txt");
+
+        var fadeTimer = 0;
+        var currentImg = -1;
+
+        function lastImg() {
+            clearTimeout(timer);
+            currentImg = currentImg - 2;
+            timer = changeImg();
+        }
+
+        function nextImg() {
+            clearTimeout(timer);
+            timer = changeImg();
+        }
+
+        var timer = changeImg();
+        function changeImg() {
+
+            // Disable next btns
+            leftArrow.style.pointerEvents = "none";
+            rightArrow.style.pointerEvents = "none";
+
+            // Next img
+            currentImg++;
+            if (currentImg >= imgs.length)
+                currentImg = 0;
+            else if (currentImg < 0)
+                currentImg = imgs.length - 1;
+
+            // Fade txt out
+            txts.forEach(el => {
+                el.style.opacity = 0;
+            });
+
+            // Fade img out
+            setTimeout(function () {
+
+                imgs.forEach(el => {
+                    el.style.opacity = 0;
+                });
+
+                // Fade next img in
+                imgs[currentImg].style.opacity = 1;
+
+                // Fade txt in
+                setTimeout(function () {
+
+                    txts.forEach(el => {
+                        el.style.top = "300px";
+                        el.style.pointerEvents = "none";
+                    });
+
+                    txts[currentImg].style.opacity = 1;
+                    txts[currentImg].style.top = "0px";
+                    txts[currentImg].style.display = "block";
+                    txts[currentImg].style.pointerEvents = "all";
+
+                    fadeTimer = 1000;
+                    // Disable next btns
+                    leftArrow.style.pointerEvents = "all";
+                    rightArrow.style.pointerEvents = "all";
+                    timer = setTimeout(changeImg, 5000);
+
+                }, fadeTimer);
+
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
