@@ -6,42 +6,54 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
 	<style>
+		.navtop,
+		.main-nav {
+			user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-webkit-user-select: none;
+		}
+
 		.navtop-inner,
 		.main-nav-inner {
 			margin: auto;
 			max-width: 1400px;
 		}
-	
+
 		.navtop {
 			background-color: #F7F7F7;
 		}
-	
+
 		.topnav-left,
 		.topnav-right {
 			padding: 16px;
 			display: inline-flex;
 		}
-	
+
 		.topnav-right {
 			float: right;
 		}
-	
+
 		.topnav-left .topnav-link {
 			margin-right: 32px;
 			display: inline-block;
 		}
-	
+
 		.topnav-right .topnav-link {
 			margin-left: 32px;
 			display: inline-block;
 		}
-	
+
 		.topnav-link .material-icons-round {
 			color: #22549F;
 			font-size: 20px;
 			vertical-align: middle;
 		}
-	
+
+		.navlogo {
+			padding: 0 32px 0 16px;
+		}
+
 		.topnav-link img,
 		.topnav-link span {
 			margin: 0;
@@ -51,15 +63,26 @@
 			display: inline-block;
 			vertical-align: middle;
 		}
-	
+
+		.topnav-link[href]:hover span {
+			color: #22549F;
+		}
+
 		@media screen and (max-width: 1030px) {
-	
+
 			.topnav-link.topnav-hide-m,
 			.topnav-link .icon-txt {
 				display: none;
 			}
 		}
-	
+
+		@media screen and (max-width: 700px) {
+
+			.topnav-left .icon-hide-txt-m {
+				display: none;
+			}
+		}
+
 		.main-nav {
 			top: 0;
 			position: -webkit-sticky;
@@ -69,14 +92,14 @@
 			border-bottom: 1px solid rgba(68, 68, 68, 0.2);
 			/* box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.1), 0 6px 30px 0 rgba(68, 68, 68, 0.1); */
 		}
-	
+
 		.main-nav-link {
 			display: inline;
-			margin: 0 16px;
+			margin-right: 16px;
 			padding: 6px 0;
 			vertical-align: middle;
 		}
-	
+
 		.main-nav-link span {
 			font-size: 16px;
 			font-weight: normal;
@@ -84,38 +107,38 @@
 			display: inline;
 			vertical-align: middle;
 		}
-	
+
 		.main-nav-link:hover span {
 			color: #22549F;
 		}
-	
+
 		.main-nav-link.active {
 			border-bottom: 1px solid #22549F;
 		}
-	
+
 		.main-nav-link.active span {
 			color: #22549F;
 		}
-	
+
 		.main-nav .material-icons-round {
 			font-size: 20px;
 			vertical-align: middle;
 		}
-	
+
 		.main-nav-inner {
 			display: flex;
 		}
-	
+
 		.main-nav-left {
 			flex: 1;
 			align-self: center;
-			margin-left: 32px;
+			margin-left: 16px;
 		}
-	
+
 		.main-nav-right {
 			align-self: center;
 		}
-	
+
 		.main-nav-btn {
 			margin: 0;
 			margin-right: 16px;
@@ -124,50 +147,50 @@
 			background-color: #2a6fd6;
 			transition: 0.5s;
 		}
-	
+
 		.main-nav-btn:hover {
 			background-color: #22549F;
 			box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.2), 0 6px 30px 0 rgba(68, 68, 68, 0.2);
 		}
-	
+
 		.main-nav-btn span {
 			color: white;
 			transition: 0.5s;
 		}
-	
+
 		.main-nav-btn:hover span {
 			color: white;
 		}
-	
+
 		.main-nav-btn.light {
 			background-color: white;
 			border: 1px solid #22549F;
 		}
-	
+
 		.main-nav-btn.light:hover {
 			background-color: #2a6fd6;
 			border: 1px solid transparent;
 			box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.2), 0 6px 30px 0 rgba(68, 68, 68, 0.2);
 		}
-	
+
 		.main-nav-btn.light span {
 			color: black;
 			transition: 0.5s;
 		}
-	
+
 		.main-nav-btn.light:hover span {
 			color: white;
 		}
-	
+
 		@media screen and (max-width: 1300px) {
-	
+
 			.main-nav-left-inner {
 				display: none;
 			}
 		}
-	
+
 		@media screen and (max-width: 700px) {
-	
+
 			.main-nav-hide-m {
 				display: none;
 			}
@@ -176,7 +199,7 @@
 </head>
 
 <body>
-	
+
 	<!-- Top Nav Menu -->
 	<div class="navtop">
 
@@ -187,12 +210,12 @@
 				<a class="topnav-link" href="#0">
 					<span class="material-icons-round">email</span>
 					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<span class="icon-txt">my-businesse-email-address@gmail.com</span>
+					<span class="icon-hide-txt-m">my-businesse-email-address@gmail.com</span>
 				</a>
 				<a class="topnav-link" href="#0">
 					<span class="material-icons-round">phone</span>
 					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<span class="icon-txt">+ (123) 0800 123 4567</span>
+					<span class="icon-hide-txt-m">+ (123) 0800 123 4567</span>
 				</a>
 				<a class="topnav-link topnav-hide-m">
 					<span class="material-icons-round">schedule</span>
@@ -224,11 +247,12 @@
 
 		<div class="main-nav-inner">
 
-			<img src="https://g2s.io/imgs/background.jpg" alt="auto" width="auto" height="60" loading="lazy">
+			<img class="navlogo" src="https://g2s.io/imgs/background.jpg" alt="auto" width="auto" height="60"
+				loading="lazy" draggable="false">
 
 			<div class="main-nav-left">
 
-				<div class="main-nav-left-inner">
+				<div class="main-nav-left-inner" auto-active-group-="">
 
 					<a class="main-nav-link active" href="#0">
 						<!-- <span class="material-icons-round">home</span> -->
