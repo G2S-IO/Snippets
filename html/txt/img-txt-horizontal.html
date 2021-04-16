@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="snippet" content="snippets/head.html">
+
+    <style>
+        .img-txt-row-padding {
+            padding: 32px;
+            margin: auto;
+        }
+
+        .img-txt-row-padding.img-full-width {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .img-txt-row {
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            flex-flow: wrap;
+            -webkit-flex-flow: wrap;
+            overflow: visible;
+        }
+
+        .img-txt-row:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .img-txt-col {
+            margin: 0;
+            padding: 0;
+            float: left;
+            overflow: visible;
+        }
+
+        .img-txt-content {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: visible;
+            display: table;
+        }
+
+        /* Reverse columns */
+        .img-txt-row-padding.reverse .img-txt-row {
+            flex-flow: row-reverse wrap;
+        }
+
+        /* Align text vertically center */
+        .img-txt-col-content {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .img-txt-col-content {
+            padding: 32px 32px 32px 32px;
+        }
+
+        .img-txt-col-content .description {
+            text-align: justify;
+        }
+
+        /* Remove the top margin on the contents first child */
+        .img-txt-row .img-txt-col-content :first-child {
+            margin-top: 0;
+        }
+
+        /* Remove the bottom margin on the contents last child */
+        .img-txt-row .img-txt-col-content :last-child {
+            margin-bottom: 0;
+        }
+
+        .img-txt-row-padding.reverse .img-txt-col .img-txt-content .img-txt-col-content {
+            padding: 32px 32px 32px 32px;
+        }
+
+        .img-txt-row-padding .img-txt-content .img-txt-col-content {
+            padding: 32px 32px 32px 32px;
+        }
+
+        .img-txt-row-padding.reverse .img-txt-col-content {
+            padding: 32px 32px 32px 0;
+        }
+
+        /* Image */
+        .img-txt-col-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-txt-col-img img.pos-left {
+            object-position: left;
+            -o-object-position: left;
+        }
+
+        .img-txt-col-img img.pos-right {
+            object-position: right;
+            -o-object-position: right;
+        }
+
+        .img-txt-col-img img.pos-center {
+            object-position: center;
+            -o-object-position: center;
+        }
+
+        .img-txt-col-img img.pos-top {
+            object-position: top;
+            -o-object-position: top;
+        }
+
+        .img-txt-col-img img.pos-bottom {
+            object-position: bottom;
+            -o-object-position: bottom;
+        }
+
+        .img-txt-col-img img.fit-contain {
+            -o-object-fit: contain;
+            object-fit: contain;
+        }
+
+        .img-txt-col-img img.fit-cover {
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+
+        .img-txt-col-img img.fit-fill {
+            -o-object-fit: fill;
+            object-fit: fill;
+        }
+
+        .img-txt-col-img img.fit-none {
+            -o-object-fit: none;
+            object-fit: none;
+        }
+
+        .img-txt-col-img img.fit-scale-down {
+            -o-object-fit: scale-down;
+            object-fit: scale-down;
+        }
+
+        .img-txt-col-img img.fit-initial {
+            -o-object-fit: initial;
+            object-fit: initial;
+        }
+
+        .img-txt-col-img img.fit-inherit {
+            -o-object-fit: inherit;
+            object-fit: inherit;
+        }
+
+        .img-txt-col-img img.fit-unset {
+            -o-object-fit: unset;
+            object-fit: unset;
+        }
+
+        /* Width */
+        .img-txt-row .w10 {
+            width: 10%;
+        }
+
+        .img-txt-row .w20 {
+            width: 20%;
+        }
+
+        .img-txt-row .w30 {
+            width: 30%;
+        }
+
+        .img-txt-row .w33 {
+            width: 33.33%;
+        }
+
+        .img-txt-row .w40 {
+            width: 40%;
+        }
+
+        .img-txt-row .w50 {
+            width: 50%;
+        }
+
+        .img-txt-row .w60 {
+            width: 60%;
+        }
+
+        .img-txt-row .w70 {
+            width: 70%;
+        }
+
+        .img-txt-row .w80 {
+            width: 80%;
+        }
+
+        .img-txt-row .w90 {
+            width: 90%;
+        }
+
+        .img-txt-row .w100 {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 1224px) {
+            .img-txt-row .w10t {
+                width: 10%;
+            }
+
+            .img-txt-row .w20t {
+                width: 20%;
+            }
+
+            .img-txt-row .w30t {
+                width: 30%;
+            }
+
+            .img-txt-row .w33t {
+                width: 33.33%;
+            }
+
+            .img-txt-row .w40t {
+                width: 40%;
+            }
+
+            .img-txt-row .w50t {
+                width: 50%;
+            }
+
+            .img-txt-row .w60t {
+                width: 60%;
+            }
+
+            .img-txt-row .w70t {
+                width: 70%;
+            }
+
+            .img-txt-row .w80t {
+                width: 80%;
+            }
+
+            .img-txt-row .w90t {
+                width: 90%;
+            }
+
+            .img-txt-row .w100t {
+                width: 100%;
+            }
+
+        }
+
+        @media screen and (max-width: 900px) {
+
+            .img-txt-row .img-txt-col-content :first-child {
+                margin-top: 16px;
+            }
+
+            .img-txt-row-padding {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .img-txt-col-img img {
+                max-height: 300px;
+                /* padding-bottom: 16px; */
+            }
+
+            .img-txt-row-padding .img-txt-content .img-txt-col-content,
+            .img-txt-row-padding.reverse .img-txt-col-content,
+            .img-txt-row-padding.reverse .img-txt-col .img-txt-content .img-txt-col-content {
+                padding: 16px 16px 16px 16px;
+            }
+
+            .img-txt-row .w10m {
+                width: 10%;
+            }
+
+            .img-txt-row .w20m {
+                width: 20%;
+            }
+
+            .img-txt-row .w30m {
+                width: 30%;
+            }
+
+            .img-txt-row .w33m {
+                width: 33.33%;
+            }
+
+            .img-txt-row .w40m {
+                width: 40%;
+            }
+
+            .img-txt-row .w50m {
+                width: 50%;
+            }
+
+            .img-txt-row .w60m {
+                width: 60%;
+            }
+
+            .img-txt-row .w70m {
+                width: 70%;
+            }
+
+            .img-txt-row .w80m {
+                width: 80%;
+            }
+
+            .img-txt-row .w90m {
+                width: 90%;
+            }
+
+            .img-txt-row .w100m {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="img-txt-row-padding reverse img-full-width">
+        <div class="img-txt-row">
+            <div class="img-txt-col img-txt-col-img w40 w40t w100m">
+                <img class="pos-center fit-cover" auto-webp="true" alt="auto" src="https://g2s.io/imgs/default/background.jpg" draggable="false">
+            </div>
+            <div class="img-txt-col w60 w60t w100m">
+                <div class="img-txt-content">
+                    <div class="img-txt-col-content">
+                        <h1 class="title">
+                            <b>Title</b>
+                        </h1>
+                        <h2 class="subtitle">
+                            This Is The Subtitle
+                        </h2>
+                        <p class="description">
+                            This is a description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
