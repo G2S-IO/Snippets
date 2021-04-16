@@ -63,26 +63,12 @@
             margin-right: 6px;
             display: inline-block;
             vertical-align: middle;
+            color: black;
         }
 
         .topnav-link[href]:hover span {
             color: #22549F;
-        }
-
-        @media screen and (max-width: 1030px) {
-
-            .topnav-link.topnav-hide-m,
-            .topnav-link .icon-txt {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 700px) {
-
-            .topnav-left .icon-hide-txt-m {
-                display: none;
-            }
-        }
+        }        
 
         .main-nav {
             top: 0;
@@ -101,6 +87,9 @@
             padding: 6px 0;
             margin-right: 16px;
             vertical-align: middle;
+            line-height: 1;
+            text-decoration: none;
+            color: black;
         }
 
         .main-nav-link span {
@@ -121,18 +110,6 @@
 
         .main-nav-link.active span {
             color: #22549F;
-        }
-
-
-        .main-nav-dropdown-btn {
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: transparent;
-        }
-
-        .main-nav-link:hover .main-nav-dropdown-btn {
-            color: #2a6fd6;
         }
 
         .main-nav-dropdown-content {
@@ -231,7 +208,7 @@
 
         .main-nav-btn.light:hover span {
             color: white;
-        }
+        }                
 
         @media screen and (max-width: 1300px) {
 
@@ -239,11 +216,27 @@
                 display: none;
             }
         }
+        
+        @media screen and (max-width: 1030px) {
+
+            .topnav-link.topnav-hide-m,
+            .topnav-link .topnav-hide-m  {
+                display: none;
+            }
+        }
 
         @media screen and (max-width: 700px) {
+            
+            .topnav-left .icon-hide-txt-m {
+                display: none;
+            }
 
             .main-nav-hide-m {
                 display: none;
+            }
+            
+            .navlogo {
+                padding: 0;
             }
         }
     </style>
@@ -271,7 +264,7 @@
                 <a class="topnav-link topnav-hide-m">
                     <span class="material-icons-round">schedule</span>
                     <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                    <span class="icon-txt">Hours 08:30 - 17:00</span>
+                    <span>Hours 08:30 - 17:00</span>
                 </a>
             </div>
 
@@ -280,12 +273,12 @@
                 <a class="topnav-link" href="#0">
                     <!-- <span class="material-icons-round">facebook</span> -->
                     <img src="gallery/icons/facebook.png" alt="auto" width="16" height="16" loading="lazy">
-                    <span class="icon-txt">Facebook</span>
+                    <span class="topnav-hide-m">Facebook</span>
                 </a>
                 <a class="topnav-link" href="#0">
                     <!-- <span class="material-icons-round">facebook</span> -->
                     <img src="gallery/icons/linked-in.png" alt="auto" width="16" height="16" loading="lazy">
-                    <span class="icon-txt">LinkedIn</span>
+                    <span class="topnav-hide-m">LinkedIn</span>
                 </a>
             </div>
 
@@ -307,11 +300,11 @@
                     <a class="main-nav-link active" href="#0">
                         <!-- <span class="material-icons-round">home</span> -->
                         <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                        <span class="icon-txt">Home</span>
+                        <span>Home</span>
                     </a>
 
                     <div class="main-nav-link">
-                        <button class="main-nav-dropdown-btn">Services</button>
+                        <span>Services</span>
                         <div class="main-nav-dropdown-content">
                             <div>
                                 <a href="#0">Some Services</a>
@@ -324,25 +317,25 @@
                     <a class="main-nav-link" href="#0">
                         <!-- <span class="material-icons-round">image</span> -->
                         <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                        <span class="icon-txt">Gallery</span>
+                        <span>Gallery</span>
                     </a>
 
                     <a class="main-nav-link" href="#0">
                         <!-- <span class="material-icons-round">collections</span> -->
                         <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                        <span class="icon-txt">Projects</span>
+                        <span>Projects</span>
                     </a>
 
                     <a class="main-nav-link" href="#0">
                         <!-- <span class="material-icons-round">people_outline</span> -->
                         <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                        <span class="icon-txt">About Us</span>
+                        <span>About Us</span>
                     </a>
 
                     <a class="main-nav-link" href="#0">
                         <!-- <span class="material-icons-round">contact_mail</span> -->
                         <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                        <span class="icon-txt">Contact</span>
+                        <span>Contact</span>
                     </a>
 
                 </div>
@@ -354,19 +347,19 @@
                 <a class="main-nav-link main-nav-btn light main-nav-hide-m" href="#0">
                     <span class="material-icons-round">login</span>
                     <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                    <span class="icon-txt">Client Portal</span>
+                    <span>Client Portal</span>
                 </a>
 
                 <a class="main-nav-link main-nav-btn main-nav-hide-m" href="#0">
                     <span class="material-icons-round">request_quote</span>
                     <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                    <span class="icon-txt">Get Quote</span>
+                    <span>Get Quote</span>
                 </a>
 
                 <a class="main-nav-link main-nav-btn" onclick="">
                     <span class="material-icons-round">menu</span>
                     <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-                    <!-- <span class="icon-txt">Menu</span> -->
+                    <!-- <span>Menu</span> -->
                 </a>
 
             </div>
