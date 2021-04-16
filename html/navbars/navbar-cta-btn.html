@@ -2,378 +2,377 @@
 <html lang="en">
 
 <head>
-	<meta name="snippet" content="snippets/head.html">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <meta name="snippet" content="snippets/head.html">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-	<style>
-		.navtop,
-		.main-nav {
-		    z-index: 10;
-		    user-select: none;
-		    -moz-user-select: none;
-		    -ms-user-select: none;
-		    -webkit-user-select: none;
-		}
+    <style>
+        .navtop,
+        .main-nav {
+            z-index: 10;
+            user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+        }
 
-		.navtop-inner,
-		.main-nav-inner {
-		    margin: auto;
-		    max-width: 1400px;
-		}
+        .navtop-inner,
+        .main-nav-inner {
+            margin: auto;
+            max-width: 1400px;
+        }
 
-		.navtop {
-		    background-color: #F7F7F7;
-		}
+        .navtop {
+            background-color: #F7F7F7;
+        }
 
-		.topnav-left,
-		.topnav-right {
-		    padding: 16px;
-		    display: inline-flex;
-		}
+        .topnav-left,
+        .topnav-right {
+            padding: 16px;
+            display: inline-flex;
+        }
 
-		.topnav-right {
-		    float: right;
-		}
+        .topnav-right {
+            float: right;
+        }
 
-		.topnav-left .topnav-link {
-		    margin-right: 32px;
-		    display: inline-block;
-		}
+        .topnav-left .topnav-link {
+            margin-right: 32px;
+            display: inline-block;
+        }
 
-		.topnav-right .topnav-link {
-		    margin-left: 32px;
-		    display: inline-block;
-		}
+        .topnav-right .topnav-link {
+            margin-left: 32px;
+            display: inline-block;
+        }
 
-		.topnav-link .material-icons-round {
-		    color: #22549F;
-		    font-size: 20px;
-		    vertical-align: middle;
-		}
+        .topnav-link .material-icons-round {
+            color: #22549F;
+            font-size: 20px;
+            vertical-align: middle;
+        }
 
-		.navlogo {
-		    padding: 0 32px 0 16px;
-		}
+        .navlogo {
+            padding: 0 32px 0 16px;
+        }
 
-		.topnav-link img,
-		.topnav-link span {
-		    margin: 0;
-		    padding: 0;
-		    font-size: 14px;
-		    margin-right: 6px;
-		    display: inline-block;
-		    vertical-align: middle;
-		}
+        .topnav-link img,
+        .topnav-link span {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            margin-right: 6px;
+            display: inline-block;
+            vertical-align: middle;
+        }
 
-		.topnav-link[href]:hover span {
-		    color: #22549F;
-		}
+        .topnav-link[href]:hover span {
+            color: #22549F;
+        }
 
-		@media screen and (max-width: 1030px) {
+        @media screen and (max-width: 1030px) {
 
-		    .topnav-link.topnav-hide-m,
-		    .topnav-link .icon-txt {
-			display: none;
-		    }
-		}
+            .topnav-link.topnav-hide-m,
+            .topnav-link .icon-txt {
+                display: none;
+            }
+        }
 
-		@media screen and (max-width: 700px) {
+        @media screen and (max-width: 700px) {
 
-		    .topnav-left .icon-hide-txt-m {
-			display: none;
-		    }
-		}
+            .topnav-left .icon-hide-txt-m {
+                display: none;
+            }
+        }
 
-		.main-nav {
-		    top: 0;
-		    position: -webkit-sticky;
-		    position: sticky;
-		    padding: 16px 0;
-		    background-color: white;
-		    border-bottom: 1px solid rgba(68, 68, 68, 0.2);
-		    /* box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.1), 0 6px 30px 0 rgba(68, 68, 68, 0.1); */
-		}
+        .main-nav {
+            top: 0;
+            position: -webkit-sticky;
+            position: sticky;
+            padding: 16px 0;
+            background-color: white;
+            border-bottom: 1px solid rgba(68, 68, 68, 0.2);
+            /* box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.1), 0 6px 30px 0 rgba(68, 68, 68, 0.1); */
+        }
 
-		.main-nav-link {
-			  cursor: pointer;
-		    position: relative;
-		    display: inline-block;
-		    padding: 6px 0;
-		    margin-right: 16px;
-		    vertical-align: middle;
-		}
+        .main-nav-link {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            padding: 6px 0;
+            margin-right: 16px;
+            vertical-align: middle;
+        }
 
-		.main-nav-link span {
-		    font-size: 16px;
-		    font-weight: normal;
-		    margin: 0 3px;
-		    display: inline;
-		    vertical-align: middle;
-		}
+        .main-nav-link span {
+            font-size: 16px;
+            font-weight: normal;
+            margin: 0 3px;
+            display: inline;
+            vertical-align: middle;
+        }
 
-		.main-nav-link:hover span {
-		    color: #22549F;
-		}
+        .main-nav-link:hover span {
+            color: #22549F;
+        }
 
-		.main-nav-link.active {
-		    border-bottom: 1px solid #22549F;
-		}
+        .main-nav-link.active {
+            border-bottom: 1px solid #22549F;
+        }
 
-		.main-nav-link.active span {
-		    color: #22549F;
-		}
+        .main-nav-link.active span {
+            color: #22549F;
+        }
 
 
-		.main-nav-dropdown-btn {
-		    border: none;
-		    font-size: 16px;
-		    cursor: pointer;
-		    background-color: transparent;    
-		}
+        .main-nav-dropdown-btn {
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: transparent;
+        }
 
-		.main-nav-link:hover .main-nav-dropdown-btn {
-		    color: #2a6fd6;
-		}
+        .main-nav-link:hover .main-nav-dropdown-btn {
+            color: #2a6fd6;
+        }
 
-		.main-nav-dropdown-content {    
-		    left: 50%;
-		    display: none;
-		    position: absolute;
-		    transform: translateX(-50%);    
-		}
+        .main-nav-dropdown-content {
+            left: 50%;
+            display: none;
+            position: absolute;
+            transform: translateX(-50%);
+        }
 
-		.main-nav-dropdown-content div {
-		    white-space: nowrap;    
-		    padding: 6px 12px;
-		    margin-top: 16px;
+        .main-nav-dropdown-content div {
+            white-space: nowrap;
+            padding: 6px 12px;
+            margin-top: 16px;
             margin-bottom: 16px;
-		    border-radius: 6px;
-		    background-color: white;
-		    box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.1), 0 6px 30px 0 rgba(68, 68, 68, 0.1);
-		}
+            border-radius: 6px;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.1), 0 6px 30px 0 rgba(68, 68, 68, 0.1);
+        }
 
-		.main-nav-dropdown-content a {
-		    color: black;
-		    display: block;
-		    margin: 6px 0;
-		    padding: 12px 16px;
-		    border-radius: 6px;
-		    text-decoration: none;
-		}
+        .main-nav-dropdown-content a {
+            color: black;
+            display: block;
+            margin: 6px 0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
 
-		.main-nav-dropdown-content a:hover,
-		.main-nav-dropdown-content a.active {
-		    color: white;
-		    background-color: #2a6fd6;
-		}
+        .main-nav-dropdown-content a:hover,
+        .main-nav-dropdown-content a.active {
+            color: white;
+            background-color: #2a6fd6;
+        }
 
-		.main-nav-link:hover .main-nav-dropdown-content {
-		    display: block;
-		}
+        .main-nav-link:hover .main-nav-dropdown-content {
+            display: block;
+        }
 
-		.main-nav .material-icons-round {
-		    font-size: 20px;
-		    vertical-align: middle;
-		}
+        .main-nav .material-icons-round {
+            font-size: 20px;
+            vertical-align: middle;
+        }
 
-		.main-nav-inner {
-		    display: flex;
-		}
+        .main-nav-inner {
+            display: flex;
+        }
 
-		.main-nav-left {
-		    flex: 1;
-		    align-self: center;
-		    margin-left: 16px;
-		}
+        .main-nav-left {
+            flex: 1;
+            align-self: center;
+            margin-left: 16px;
+        }
 
-		.main-nav-right {
-		    align-self: center;
-		}
+        .main-nav-right {
+            align-self: center;
+        }
 
-		.main-nav-btn {
-		    margin: 0;
-		    margin-right: 16px;
-		    padding: 16px;
-		    border-radius: 6px;
-		    background-color: #2a6fd6;
-		    transition: 0.5s;
-		}
+        .main-nav-btn {
+            margin: 0;
+            margin-right: 16px;
+            padding: 16px;
+            border-radius: 6px;
+            background-color: #2a6fd6;
+            transition: 0.5s;
+        }
 
-		.main-nav-btn:hover {
-		    background-color: #22549F;
-		    box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.2), 0 6px 30px 0 rgba(68, 68, 68, 0.2);
-		}
+        .main-nav-btn:hover {
+            background-color: #22549F;
+            box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.2), 0 6px 30px 0 rgba(68, 68, 68, 0.2);
+        }
 
-		.main-nav-btn span {
-		    color: white;
-		    transition: 0.5s;
-		}
+        .main-nav-btn span {
+            color: white;
+            transition: 0.5s;
+        }
 
-		.main-nav-btn:hover span {
-		    color: white;
-		}
+        .main-nav-btn:hover span {
+            color: white;
+        }
 
-		.main-nav-btn.light {
-		    background-color: white;
-		    border: 1px solid #22549F;
-		}
+        .main-nav-btn.light {
+            background-color: white;
+            border: 1px solid #22549F;
+        }
 
-		.main-nav-btn.light:hover {
-		    background-color: #2a6fd6;
-		    border: 1px solid transparent;
-		    box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.2), 0 6px 30px 0 rgba(68, 68, 68, 0.2);
-		}
+        .main-nav-btn.light:hover {
+            background-color: #2a6fd6;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.2), 0 6px 30px 0 rgba(68, 68, 68, 0.2);
+        }
 
-		.main-nav-btn.light span {
-		    color: black;
-		    transition: 0.5s;
-		}
+        .main-nav-btn.light span {
+            color: black;
+            transition: 0.5s;
+        }
 
-		.main-nav-btn.light:hover span {
-		    color: white;
-		}
+        .main-nav-btn.light:hover span {
+            color: white;
+        }
 
-		@media screen and (max-width: 1300px) {
+        @media screen and (max-width: 1300px) {
 
-		    .main-nav-left-inner {
-			display: none;
-		    }
-		}
+            .main-nav-left-inner {
+                display: none;
+            }
+        }
 
-		@media screen and (max-width: 700px) {
+        @media screen and (max-width: 700px) {
 
-		    .main-nav-hide-m {
-			display: none;
-		    }
-		}
-	</style>
+            .main-nav-hide-m {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-	<!-- Top Nav Menu -->
-	<div class="navtop">
+    <!-- Top Nav Menu -->
+    <div class="navtop">
 
-		<div class="navtop-inner">
+        <div class="navtop-inner">
 
-			<!-- Left Side -->
-			<div class="topnav-left">
-				<a class="topnav-link" href="#0">
-					<span class="material-icons-round">email</span>
-					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<span class="icon-hide-txt-m">my-businesse-email-address@gmail.com</span>
-				</a>
-				<a class="topnav-link" href="#0">
-					<span class="material-icons-round">phone</span>
-					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<span class="icon-hide-txt-m">+ (123) 0800 123 4567</span>
-				</a>
-				<a class="topnav-link topnav-hide-m">
-					<span class="material-icons-round">schedule</span>
-					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<span class="icon-txt">Hours 08:30 - 17:00</span>
-				</a>
-			</div>
+            <!-- Left Side -->
+            <div class="topnav-left">
+                <a class="topnav-link" href="#0">
+                    <span class="material-icons-round">email</span>
+                    <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                    <span class="icon-hide-txt-m">my-businesse-email-address@gmail.com</span>
+                </a>
+                <a class="topnav-link" href="#0">
+                    <span class="material-icons-round">phone</span>
+                    <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                    <span class="icon-hide-txt-m">+ (123) 0800 123 4567</span>
+                </a>
+                <a class="topnav-link topnav-hide-m">
+                    <span class="material-icons-round">schedule</span>
+                    <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                    <span class="icon-txt">Hours 08:30 - 17:00</span>
+                </a>
+            </div>
 
-			<!-- Right Side -->
-			<div class="topnav-right">
-				<a class="topnav-link" href="#0">
-					<!-- <span class="material-icons-round">facebook</span> -->
-					<img src="gallery/icons/facebook.png" alt="auto" width="16" height="16" loading="lazy">
-					<span class="icon-txt">Facebook</span>
-				</a>
-				<a class="topnav-link" href="#0">
-					<!-- <span class="material-icons-round">facebook</span> -->
-					<img src="gallery/icons/linked-in.png" alt="auto" width="16" height="16" loading="lazy">
-					<span class="icon-txt">LinkedIn</span>
-				</a>
-			</div>
+            <!-- Right Side -->
+            <div class="topnav-right">
+                <a class="topnav-link" href="#0">
+                    <!-- <span class="material-icons-round">facebook</span> -->
+                    <img src="gallery/icons/facebook.png" alt="auto" width="16" height="16" loading="lazy">
+                    <span class="icon-txt">Facebook</span>
+                </a>
+                <a class="topnav-link" href="#0">
+                    <!-- <span class="material-icons-round">facebook</span> -->
+                    <img src="gallery/icons/linked-in.png" alt="auto" width="16" height="16" loading="lazy">
+                    <span class="icon-txt">LinkedIn</span>
+                </a>
+            </div>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
-	<!-- Main Navbar -->
-	<div class="main-nav">
+    <!-- Main Navbar -->
+    <div class="main-nav">
 
-		<div class="main-nav-inner">
+        <div class="main-nav-inner">
 
-			<img class="navlogo" src="https://g2s.io/imgs/background.jpg" alt="auto" width="auto" height="60"
-				loading="lazy" draggable="false">
+            <img class="navlogo" src="https://g2s.io/imgs/background.jpg" alt="auto" width="auto" height="60" loading="lazy" draggable="false">
 
-			<div class="main-nav-left">
+            <div class="main-nav-left">
 
-				<div class="main-nav-left-inner" auto-active-group-="">
+                <div class="main-nav-left-inner" auto-active-group-="">
 
-					<a class="main-nav-link active" href="#0">
-						<!-- <span class="material-icons-round">home</span> -->
-						<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-						<span class="icon-txt">Home</span>
-					</a>
+                    <a class="main-nav-link active" href="#0">
+                        <!-- <span class="material-icons-round">home</span> -->
+                        <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                        <span class="icon-txt">Home</span>
+                    </a>
 
-					<div class="main-nav-link">
-						<button class="main-nav-dropdown-btn">Services</button>
-						<div class="main-nav-dropdown-content">
-							<div>
-								<a href="#0">Some Services</a>
-								<a href="#0">Another Services</a>
-								<a href="#0">Some Other Services</a>
-							</div>
-						</div>
-					</div>
+                    <div class="main-nav-link">
+                        <button class="main-nav-dropdown-btn">Services</button>
+                        <div class="main-nav-dropdown-content">
+                            <div>
+                                <a href="#0">Some Services</a>
+                                <a href="#0">Another Services</a>
+                                <a href="#0">Some Other Services</a>
+                            </div>
+                        </div>
+                    </div>
 
-					<a class="main-nav-link" href="#0">
-						<!-- <span class="material-icons-round">image</span> -->
-						<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-						<span class="icon-txt">Gallery</span>
-					</a>
+                    <a class="main-nav-link" href="#0">
+                        <!-- <span class="material-icons-round">image</span> -->
+                        <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                        <span class="icon-txt">Gallery</span>
+                    </a>
 
-					<a class="main-nav-link" href="#0">
-						<!-- <span class="material-icons-round">collections</span> -->
-						<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-						<span class="icon-txt">Projects</span>
-					</a>
+                    <a class="main-nav-link" href="#0">
+                        <!-- <span class="material-icons-round">collections</span> -->
+                        <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                        <span class="icon-txt">Projects</span>
+                    </a>
 
-					<a class="main-nav-link" href="#0">
-						<!-- <span class="material-icons-round">people_outline</span> -->
-						<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-						<span class="icon-txt">About Us</span>
-					</a>
+                    <a class="main-nav-link" href="#0">
+                        <!-- <span class="material-icons-round">people_outline</span> -->
+                        <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                        <span class="icon-txt">About Us</span>
+                    </a>
 
-					<a class="main-nav-link" href="#0">
-						<!-- <span class="material-icons-round">contact_mail</span> -->
-						<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-						<span class="icon-txt">Contact</span>
-					</a>
+                    <a class="main-nav-link" href="#0">
+                        <!-- <span class="material-icons-round">contact_mail</span> -->
+                        <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                        <span class="icon-txt">Contact</span>
+                    </a>
 
-				</div>
+                </div>
 
-			</div>
+            </div>
 
-			<div class="main-nav-right">
+            <div class="main-nav-right">
 
-				<a class="main-nav-link main-nav-btn light main-nav-hide-m" href="#0">
-					<span class="material-icons-round">login</span>
-					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<span class="icon-txt">Client Portal</span>
-				</a>
+                <a class="main-nav-link main-nav-btn light main-nav-hide-m" href="#0">
+                    <span class="material-icons-round">login</span>
+                    <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                    <span class="icon-txt">Client Portal</span>
+                </a>
 
-				<a class="main-nav-link main-nav-btn main-nav-hide-m" href="#0">
-					<span class="material-icons-round">request_quote</span>
-					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<span class="icon-txt">Get Quote</span>
-				</a>
+                <a class="main-nav-link main-nav-btn main-nav-hide-m" href="#0">
+                    <span class="material-icons-round">request_quote</span>
+                    <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                    <span class="icon-txt">Get Quote</span>
+                </a>
 
-				<a class="main-nav-link main-nav-btn" onclick="">
-					<span class="material-icons-round">menu</span>
-					<!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
-					<!-- <span class="icon-txt">Menu</span> -->
-				</a>
+                <a class="main-nav-link main-nav-btn" onclick="">
+                    <span class="material-icons-round">menu</span>
+                    <!-- <img src="" alt="auto" width="20" height="20" loading="lazy"> -->
+                    <!-- <span class="icon-txt">Menu</span> -->
+                </a>
 
-			</div>
-		</div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 
 </body>
 
