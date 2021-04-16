@@ -307,8 +307,8 @@
         function changeImg() {
 
             // Disable next btns
-            leftArrow.style.pointerEvents = "none";
-            rightArrow.style.pointerEvents = "none";
+            if(leftArrow)leftArrow.style.pointerEvents = "none";
+            if(rightArrow)rightArrow.style.pointerEvents = "none";
 
             // Next img
             currentImg++;
@@ -347,8 +347,8 @@
 
                     fadeTimer = 1000;
                     // Disable next btns
-                    leftArrow.style.pointerEvents = "all";
-                    rightArrow.style.pointerEvents = "all";
+                    if(leftArrow)leftArrow.style.pointerEvents = "all";
+                    if(rightArrow)rightArrow.style.pointerEvents = "all";
                     timer = setTimeout(changeImg, 5000);
 
                 }, fadeTimer);
