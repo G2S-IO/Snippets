@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        ul.cbullets {
+            padding: 6px 16px;
+            columns: 1;
+            -moz-columns: 1;
+            -webkit-columns: 1;
+        }
+
+        @media screen and (max-width: 700px) {
+            ul.cbullets {
+                padding: 6px 3px;
+            }
+        }
+
+        ul.cbullets li {
+            color: black;
+            line-height: 2;
+            list-style: none;
+        }
+
+        ul.cbullets.ticks li:before {
+            content: '✓';
+            color: green;
+            margin-right: 16px;
+        }
+
+        ul.cbullets.crosses li:before {
+            content: '✗';
+            color: red;
+            margin-right: 16px;
+        }
+
+        ul.cbullets li.tick:before {
+            content: '✓';
+            color: green;
+            margin-right: 16px;
+        }
+
+        ul.cbullets li.cross:before {
+            content: '✗';
+            color: red;
+            margin-right: 16px;
+        }
+
+        ul.cbullets li,
+        ul.cbullets li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        ul.cbullets li a:hover {
+            color: #3E6DCF;
+        }
+    </style>
+</head>
+
+<body>
+
+    Example showing a list with all items using the same bullets
+    <ul class="cbullets ticks">
+        <li>List Item No Link</li>
+        <li><a href="#0">List Item With Link</a></li>
+        <li><a href="#0">List Item With Link</a></li>
+    </ul>
+
+    Example showing a list with each item using different bullets
+    <ul class="cbullets">
+        <li class="tick">List Item No Link</li>
+        <li class="tick"><a href="#0">List Item With Link</a></li>
+        <li class="cross"><a href="#0">List Item With Link</a></li>
+    </ul>
+
+</body>
+
+</html>
