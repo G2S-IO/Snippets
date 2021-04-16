@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="snippet" content="snippets/head.html">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <style>
+        footer {
+            box-sizing: border-box;
+            position: relative;
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+            user-select: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .footer-bgimg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            -o-object-fit: cover;
+            object-position: center;
+            -o-object-position: center;
+        }
+
+        .footer-row {
+            box-sizing: border-box;
+            padding: 64px 32px;
+            margin: auto;
+            width: 100%;
+            max-width: 1400px;
+            overflow: visible;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            flex-flow: wrap;
+            -webkit-flex-flow: wrap;
+            position: relative;
+        }
+
+        .footer-row:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .footer-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .footer-column {
+            margin: 0;
+            padding: 0;
+            float: left;
+            overflow: visible;
+        }
+
+        .footer-column-content {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: visible;
+        }
+
+        .footer-col-about {
+            width: 60%;
+        }
+
+        .footer-col-contact {
+            width: 25%;
+        }
+
+        .footer-col-links {
+            width: 15%;
+        }
+
+
+
+        .footer-col-33 {
+            width: 33.33%;
+        }
+
+        .footer-col-50 {
+            width: 50%;
+        }
+
+
+
+        .footer-title {
+            color: white;
+        }
+
+        .footer-title-sep {
+            width: 40px;
+            height: 2px;
+            background-color: white;
+        }
+
+        .footer-column-content p {
+            color: white;
+            padding-right: 64px;
+        }
+
+
+
+
+
+
+        .footer-icon {
+            /* padding: 8px 6px; */
+            display: block;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .footer-icon .icon_div {
+            font-size: 12px;
+            margin-right: 2px;
+            color: white;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .footer-icon .icon_div,
+        .footer-icon .icon_div span {
+            color: rgb(228, 228, 228);
+        }
+
+        .footer-icon:hover .icon_div span {
+            color: #3E6DCF;
+        }
+
+        .footer-icon .text_div {
+            text-align: left;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .footer-icon .text_div span {
+            color: white;
+            margin: 1em 0;
+            font-size: 16px;
+            display: block;
+            line-height: 0.5;
+        }
+
+        .footer-icon:hover .text_div span {
+            color: #3E6DCF;
+        }
+
+        .footer-bot {
+            position: relative;
+            color: white;
+            max-width: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-bot .footer-row {
+            padding: 16px 32px;
+        }
+
+        .footer-bot span {
+            font-size: 14px;
+            color: white;
+            display: inline-block;
+        }
+
+        .footer-rights {
+            color: white;
+        }
+
+        @media screen and (max-width: 1030px) {
+
+            .footer-col-about {
+                width: 100%;
+            }
+
+            .footer-col-links,
+            .footer-col-contact {
+                width: 50%;
+            }
+
+            .footer-column-content p {
+                padding-right: 0;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+
+            .footer-row {
+                padding: 32px 16px;
+            }
+
+            .footer-col-links,
+            .footer-col-contact {
+                width: 100%;
+                padding-top: 32px;
+            }
+
+            .footer-col-50 {
+                width: 100%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <footer>
+        <img class="footer-bgimg" src="https://g2s.io/imgs/background.jpg" alt="website-design" auto-webp="true" draggable="false">
+        <div class="footer-overlay"></div>
+        <div class="footer-row">
+            <div class="footer-column footer-col-about">
+                <div class="footer-column-content">
+                    <h3 class="footer-title"><b>About Us</b></h3>
+                    <div class="footer-title-sep"></div>
+                    <h3 class="footer-title"><b>Website Title</b></h3>
+                    <p>
+                        This is a description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                    <p>
+                        consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna, incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet,
+                    </p>
+                    <!-- Logo -->
+                    <img src="https://g2s.io/imgs/background.jpg" alt="auto" width="auto" height="100" loading="lazy">
+                </div>
+            </div>
+            <div class="footer-column footer-col-contact">
+                <div class="footer-column-content">
+                    <h3 class="footer-title"><b>Contact</b></h3>
+                    <div class="footer-title-sep"></div>
+
+                    <div style="padding-top:16px"></div>
+
+                    <!-- Phone -->
+                    <a class="footer-icon" href="tel:g2svar(phone)">
+                        <div class="icon_div">
+                            <span class="material-icons-round">phone</span>
+                        </div>
+                        <div class="text_div">
+                            <span><b>Phone</b></span>
+                            <span>g2svar(phone)</span>
+                        </div>
+                    </a>
+
+                    <!-- Mobile -->
+                    <a class="footer-icon" href="tel:g2svar(mobile)">
+                        <div class="icon_div">
+                            <span class="material-icons-round">phone_iphone</span>
+                        </div>
+                        <div class="text_div">
+                            <span><b>Mobile</b></span>
+                            <span>g2svar(mobile)</span>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a class="footer-icon" href="mailto:g2svar(email)">
+                        <div class="icon_div">
+                            <span class="material-icons-round">email</span>
+                            <!-- <img src="gallery/icons/email.png" alt="auto" auto-webp="true" width="20" height="20"> -->
+                        </div>
+                        <div class="text_div">
+                            <span><b>Email</b></span>
+                            <span>g2svar(email)</span>
+                        </div>
+                    </a>
+
+                    <!-- Coverage -->
+                    <a class="footer-icon" target="_blank" href="#0">
+                        <div class="icon_div">
+                            <span class="material-icons-round">location_on</span>
+                            <!-- <img src="gallery/icons/gps-icon.png" alt="auto" auto-webp="true" width="20" height="20"> -->
+                        </div>
+                        <div class="text_div">
+                            <span><b>Area</b></span>
+                            <span>United Kingdom</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            <div class="footer-column footer-col-links">
+                <div class="footer-column-content">
+                    <h3 class="footer-title"><b>Services</b></h3>
+                    <div class="footer-title-sep"></div>
+
+                    <div style="padding-top:16px"></div>
+
+                    <a class="footer-icon" href="#0">
+                        <div class="icon_div">&#x276F;</div>
+                        <div class="text_div">
+                            <span>Services 1</span>
+                        </div>
+                    </a>
+                    <a class="footer-icon" href="#0">
+                        <div class="icon_div">&#x276F;</div>
+                        <div class="text_div">
+                            <span>Services 2</span>
+                        </div>
+                    </a>
+                    <a class="footer-icon" href="#0">
+                        <div class="icon_div">&#x276F;</div>
+                        <div class="text_div">
+                            <span>Services 3</span>
+                        </div>
+                    </a>
+                    <a class="footer-icon" href="#0">
+                        <div class="icon_div">&#x276F;</div>
+                        <div class="text_div">
+                            <span>Services 4</span>
+                        </div>
+                    </a>
+                    <a class="footer-icon" href="#0">
+                        <div class="icon_div">&#x276F;</div>
+                        <div class="text_div">
+                            <span>Services 5</span>
+                        </div>
+                    </a>
+                    <a class="footer-icon" href="#0">
+                        <div class="icon_div">&#x276F;</div>
+                        <div class="text_div">
+                            <span>Services 6</span>
+                        </div>
+                    </a>
+                    <a class="footer-icon" href="#0">
+                        <div class="icon_div">&#x276F;</div>
+                        <div class="text_div">
+                            <span>Services 7</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bot">
+            <div class="footer-row">
+                <div class="footer-column footer-col-50">
+                    <div class="footer-column-content">
+                        © <span class="date-year"></span>
+                        <span>
+                            All Rights Reserved | ...
+                        </span>
+                    </div>
+                </div>
+                <div class="footer-column footer-col-50">
+                    <div class="footer-column-content">
+                        <span style="float:right;">
+                            <a href="https://g2s.io" target="_blank" style="color:white;">Built With The G2S Website Builder</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
