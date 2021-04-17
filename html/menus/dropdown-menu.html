@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        .g2s-menu-container {
+            margin: 6px;
+            padding: 6px;
+            border: none;
+            border-radius: 6px;
+            overflow: hidden;
+            /* max-width: 800px; */
+        }
+
+        .g2s-menu div :first-child {
+            border-top: none;
+        }
+
+        .g2s-menu .accordion,
+        .g2s-menu :first-child,
+        .g2s-menu .accordion :first-child {
+            border-top: none;
+        }
+
+        .g2s-menu a {
+            border-top: none;
+        }
+
+        /* Links */
+        .g2s-menu a,
+        .g2s-menu a:link,
+        .g2s-menu a:visited {
+            font-size: 16px;
+            letter-spacing: .6px;
+            padding: 8px 0;
+            color: #333333;
+            cursor: pointer;
+            background-color: transparent;
+            text-align: left;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            overflow: hidden;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Links hover */
+        .g2s-menu a.active,
+        .g2s-menu a:hover {
+            text-decoration: none;
+            color: #416FBA;
+        }
+
+        /* Arrow */
+        .g2s-menu a:before {
+            content: '\276F';
+            font-size: 12px;
+            margin: -1px 12px 1px 8px;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            align-items: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        /* This is used to disable the transition, we cant edit :before styles in js */
+        .g2s-menu a.stoptransition:before {
+            transition: transform 0s;
+        }
+
+        /* Turn off arrow if no href (no href means its a dropdown) */
+        .g2s-menu a[href]:before {
+            color: transparent;
+        }
+
+        /* Rotate the arrow if it's open */
+        .g2s-menu a.open:before {
+            content: "\276F";
+            transform: rotate(90deg);
+        }
+
+        /* Drop down content */
+        .g2s-menu div {
+            opacity: 1;
+            padding-left: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        /* Accordion */
+        .g2s-menu-container .g2s-menu .accordion {
+            margin: 0 16px 6px 16px;
+            border: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="g2s-menu-container">
+        <div class="g2s-menu" auto-active-group>
+            <a href="#0">Home</a>
+            <a href="#0">About</a>
+            <a href="#0">Gallery</a>
+            <a>Accordion</a>
+            <div>
+                <div class="accordion">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                        mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                        massa quis enim.
+                    </p>
+                </div>
+            </div>
+            <a>Services</a>
+            <div>
+                <a href="#0">Service 1</a>
+                <a href="#0">Service 2</a>
+                <a href="#0">Service 3</a>
+                <a>Services 4</a>
+                <div>
+                    <a href="#0">Services 4 A</a>
+                    <a href="#0">Services 4 B</a>
+                    <a href="#0">Services 4 C</a>
+                </div>
+            </div>
+            <a href="#0">Contact</a>
+        </div>
+    </div>
+
+    <script>
+        // Set events
+        window.addEventListener('DOMContentLoaded', initialiseDropdowns());
+        window.addEventListener("resize", resizeOpendropdowns);
+
+        function initialiseDropdowns() {
+            // Set dropdown
+            var dropdowns = document.querySelectorAll(".g2s-menu a:not([href])");
+            dropdowns.forEach(el => {
+                el.nextElementSibling.classList.add("g2s-dropdown");
+                if (!el.classList.contains("close"))
+                    closeDropdown(el);
+                el.addEventListener('click', function() {
+                    toggleDropdown(el);
+                });
+                openIfChildIsActive(el);
+            });
+        }
+
+        function openIfChildIsActive(el) {
+            // Open drop down if any links within its content are active
+            if (el.nextElementSibling.querySelector('.active')) {
+                el.classList.add("stoptransition");
+                var menuTran = el.nextElementSibling.style.transition;
+                el.style.transition = "0s";
+                el.nextElementSibling.style.transition = "0s";
+                el.click();
+                setTimeout(function() {
+                    el.classList.remove("stoptransition");
+                    el.nextElementSibling.style.transition = menuTran;
+                }, 1);
+            }
+        }
+
+        function toggleDropdown(el) {
+            if (el.classList.contains("open")) {
+                closeDropdown(el);
+            } else {
+                openDropdown(el);
+            }
+        }
+
+        // Resize open dropdown
+        function resizeOpendropdowns() {
+            var dropdowns = document.querySelectorAll(".g2s-menu a.open:not([href])");
+            dropdowns.forEach(el => {
+                openDropdown(el);
+            });
+        }
+
+        // Open dropdown
+        function openDropdown(el) {
+            var openHeight = el.nextElementSibling.scrollHeight;
+            el.nextElementSibling.style.maxHeight = openHeight + "px";
+            el.classList.add("open");
+            el.classList.remove("close");
+            // Update size in parent dropdowns
+            var parentDiv = el.closest(".g2s-dropdown");
+            if (parentDiv != null) {
+                var parent = parentDiv.previousElementSibling;
+                while (parent != null) {
+                    var parentOpenHeight =
+                        parseInt(parent.nextElementSibling.style.maxHeight.replace("px", "")) + openHeight;
+                    parent.nextElementSibling.style.maxHeight = parentOpenHeight + "px";
+                    var p = parent.closest(".g2s-dropdown");
+                    if (p != null)
+                        parent = p.previousElementSibling;
+                    else parent = null;
+                }
+            }
+        }
+
+        // Close dropdown
+        function closeDropdown(el) {
+            el.nextElementSibling.style.maxHeight = "0";
+            el.classList.remove("open");
+            el.classList.add("close");
+            // Update size in parent dropdowns
+            var parentDiv = el.closest(".g2s-dropdown");
+            if (parentDiv != null) {
+                var parent = parentDiv.previousElementSibling;
+                while (parent != null) {
+                    var parentOpenHeight =
+                        parseInt(parent.nextElementSibling.style.maxHeight.replace("px", "")) - el.nextElementSibling.scrollHeight;
+                    parent.nextElementSibling.style.maxHeight = parentOpenHeight + "px";
+                    var p = parent.closest(".g2s-dropdown");
+                    if (p != null)
+                        parent = p.previousElementSibling;
+                    else parent = null;
+                }
+            }
+
+            var dropdowns = el.nextElementSibling.querySelectorAll(".g2s-menu a.open:not([href])");
+            dropdowns.forEach(elOpen => {
+                closeDropdown(elOpen);
+            });
+
+        }
+    </script>
+
+</body>
+
+</html>
