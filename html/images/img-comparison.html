@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        .g2s-img-comparison {
+            overflow: hidden;
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .g2s-comparison-img {
+            height: auto;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .g2s-comparison-img img {
+            display: block;
+            object-fit: cover;
+            -o-object-fit: cover;
+            object-position: center;
+            -o-object-position: center;
+        }
+
+        .g2s-comparison-slider {
+            width: 40px;
+            height: 40px;
+            z-index: 9;
+            opacity: 0.6;
+            border-radius: 50%;
+            position: absolute;
+            cursor: ew-resize;
+            background-color: white;
+        }
+
+        .g2s-img-comparison .left-txt {
+            left: 20px;
+        }
+
+        .g2s-img-comparison .right-txt {
+            right: 20px;
+        }
+
+        .g2s-img-comparison .left-txt,
+        .g2s-img-comparison .right-txt {
+            opacity: 1;
+            padding: 6px;
+            transition: .5s;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .g2s-comparison-slider:before {
+            left: 10px;
+            content: '\276E';
+        }
+
+        .g2s-comparison-slider:after {
+            right: 3px;
+            content: '\276F';
+        }
+
+        .g2s-comparison-slider:after,
+        .g2s-comparison-slider:before {
+            top: 50%;
+            position: absolute;
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="g2s-img-comparison" style="width:100%">
+        <div class="g2s-comparison-img">
+            <img src="https://g2s.io/imgs/bgimg.jpg" draggable="false" auto-webp="true" style="max-height: none;">
+        </div>
+        <div class="g2s-comparison-img g2s-img-comparison-overlay">
+            <img src="https://g2s.io/imgs/bgimg-pattern.jpg" draggable="false" auto-webp="true" style="max-height: none;">
+        </div>
+        <h3 class="left-txt">Before</h3>
+        <h3 class="right-txt">After</h3>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            // Store the values of all comparisons
+            var comparisons = {};
+            initComparisonSliders();
+
+            function initComparisonSliders() {
+                var i = 0;
+                var comparisonSliders = document.querySelectorAll(".g2s-img-comparison");
+                comparisonSliders.forEach(el => {
+                    el.setAttribute("data-comparison-slider-id", i);
+                    comparisons[i] = {
+                        comparisonEl: el
+                    };
+                    i++;
+                    var imgs = el.querySelectorAll("img");
+                    imgs.forEach(img => {
+                        if (img.complete) {
+                            onImgLoaded(el);
+                        } else {
+                            img.addEventListener('load', function() {
+                                onImgLoaded(el);
+                            });
+                            img.addEventListener('error', function() {
+                                // alert('error');
+                            });
+                        }
+
+                    });
+                });
+
+                function onImgLoaded(imgcomparison) {
+                    var hasImgs = true;
+                    var imgs = imgcomparison.querySelectorAll("img");
+                    imgs.forEach(img => {
+                        if (!img.complete)
+                            hasImgs = false;
+                    });
+                    if (hasImgs) {
+                        setcomparison(imgcomparison);
+                    }
+
+                }
+
+                function setcomparison(el) {
+                    if (el.getAttribute("data-comparison-loaded") == "true")
+                        return;
+                    el.setAttribute("data-comparison-loaded", "true");
+                    var comparisonsIndex = el.getAttribute("data-comparison-slider-id");
+                    var comparison = comparisons[comparisonsIndex];
+                    // Is clicked
+                    comparison.clicked = false;
+                    // Images
+                    var imgs = el.querySelectorAll("img");
+                    // Image sizes
+                    comparison.imgWidth;
+                    comparison.imgHeight;
+                    comparison.biggerImg = imgs[0].height >= imgs[1].height ? imgs[0] : imgs[1];
+                    comparison.smallerImg = imgs[0].height < imgs[1].height ? imgs[0] : imgs[1];
+                    comparison.imgOverlay = el.querySelector(".g2s-img-comparison-overlay");
+                    // Keep track of the bigger img, to set its size to the smaller img
+                    imgs.forEach(img => {
+                        img.setAttribute("width", el.offsetWidth);
+                        img.addEventListener("pointerdown", slideReady);
+                        // img.addEventListener("touchstart", slideReadyTouch);
+
+                        img.style.touchAction = "none";
+                    });
+                    /*get the width and height of the img element*/
+                    comparison.imgWidth = comparison.imgOverlay.offsetWidth;
+                    /*set the width of the img element to 50%:*/
+                    comparison.imgOverlay.style.width = (comparison.imgWidth / 2) + "px";
+                    /*create slider:*/
+                    comparison.slider = document.createElement("DIV");
+                    comparison.slider.setAttribute("class", "g2s-comparison-slider");
+                    /*insert slider*/
+                    comparison.imgOverlay.parentElement.insertBefore(comparison.slider, comparison.imgOverlay);
+                    /*position the slider in the middle:*/
+                    comparison.slider.style.left = (comparison.imgWidth / 2) - (comparison.slider.offsetWidth / 2) + "px";
+                    comparison.sliderPercentage = 50;
+                    comparison.slider.style.touchAction = "none";
+                    // Text
+                    comparison.leftTxt = el.querySelector(".left-txt");
+                    comparison.rightTxt = el.querySelector(".right-txt");
+                    // Events
+                    comparison.slider.addEventListener("pointerdown", slideReady);
+                    // comparison.slider.addEventListener("touchstart", slideReadyTouch);
+                    window.addEventListener("pointerup", slideFinish);
+                    // window.addEventListener("touchend", slideFinishTouch);
+                    // We need a short delay so the img height updates
+                    setTimeout(function() {
+                        comparison.imgHeight = comparison.imgOverlay.offsetHeight;
+                        el.style.height = comparison.imgHeight + "px";
+                        comparison.smallerImg.height = comparison.biggerImg.height;
+                        comparison.slider.style.top = (comparison.biggerImg.height / 2) - (comparison.slider.offsetHeight / 2) + "px";
+                        el.style.height = comparison.biggerImg.height + "px";
+                    }, 0);
+
+                    function slideReadyTouch(e) {
+                        e.preventDefault();
+                        slideReady(e);
+                    }
+
+                    function slideReady(e) {
+                        /*prevent any other actions that may occur when moving over the image:*/
+                        e.preventDefault();
+                        /*the slider is now clicked and ready to move:*/
+                        comparison.clicked = true;
+                        /*execute a function when the slider is moved:*/
+                        window.addEventListener("pointermove", slideMove);
+                        // window.addEventListener("touchmove", slideMoveTouch, true);
+                        slideMove(null);
+                        document.body.style.cursor = 'ew-resize';
+                    }
+
+                    function slideFinishTouch(e) {
+                        // e.preventDefault();
+                        slideFinish();
+                    }
+
+                    function slideFinish() {
+                        /*the slider is no longer clicked:*/
+                        comparison.clicked = false;
+                        document.body.style.cursor = 'default';
+                    }
+
+                    function slideMoveTouch(e) {
+                        // e.preventDefault();
+                        slideMove(e);
+                    }
+
+                    function slideMove(e) {
+                        if (e) e.preventDefault();
+                        // Return if not clicked
+                        if (!comparison.clicked)
+                            return false;
+                        /*get the cursor's x position:*/
+                        var pos = getCursorPos(e)
+                        /*prevent the slider from being positioned outside the image:*/
+                        if (pos < 0) pos = 0;
+                        if (pos > comparison.imgWidth) pos = comparison.imgWidth;
+                        /*execute a function that will resize the overlay image according to the cursor:*/
+                        slide(pos);
+                    }
+
+                    function getCursorPos(e) {
+                        var a, x = 0;
+                        e = e || window.event;
+                        /*get the x positions of the image:*/
+                        a = comparison.imgOverlay.getBoundingClientRect();
+                        /*calculate the cursor's x coordinate, relative to the image:*/
+                        x = e.pageX - a.left;
+                        /*consider any page scrolling:*/
+                        x = x - window.pageXOffset;
+                        return x;
+                    }
+
+                    function slide(x) {
+                        /*resize the image:*/
+                        comparison.imgOverlay.style.width = x + "px";
+                        /*position the slider:*/
+                        comparison.slider.style.left = comparison.imgOverlay.offsetWidth - (comparison.slider.offsetWidth / 2) + "px";
+                        var parentWidth = comparison.imgOverlay.parentElement.offsetWidth;
+                        comparison.sliderPercentage = (x / parentWidth * 100);
+                        // Disable/Enable left text
+                        if (x < (comparison.leftTxt.getBoundingClientRect().left + comparison.leftTxt.offsetWidth)) {
+                            comparison.leftTxt.style.opacity = 0;
+                        } else {
+                            comparison.leftTxt.style.opacity = 1;
+                        }
+
+                        // Disable/Enable right text
+                        if (x > comparison.imgOverlay.parentElement.offsetWidth - (comparison.leftTxt.getBoundingClientRect().left + comparison.rightTxt.offsetWidth)) {
+                            comparison.rightTxt.style.opacity = 0;
+                        } else {
+                            comparison.rightTxt.style.opacity = 1;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            window.addEventListener("resize", resizeComparisonSliders);
+
+            function resizeComparisonSliders() {
+                var comparisonSliders = document.querySelectorAll(".g2s-img-comparison");
+                comparisonSliders.forEach(el => {
+                    var comparisonsIndex = el.getAttribute("data-comparison-slider-id");
+                    var comparison = comparisons[comparisonsIndex];
+                    var imgs = el.querySelectorAll("img");
+                    imgs.forEach(img => {
+                        img.setAttribute("width", el.offsetWidth);
+                    });
+                    // We need a short delay so the img height update
+                    setTimeout(function() {
+                        comparison.imgWidth = el.offsetWidth;
+                        comparison.imgHeight = comparison.imgOverlay.offsetHeight;
+                        comparison.smallerImg.height = comparison.biggerImg.height;
+                        el.style.height = comparison.imgHeight + "px";
+                        comparison.slider.style.top = (comparison.imgHeight / 2) - (comparison.slider.offsetHeight / 2) + "px";
+                        comparison.imgOverlay.style.width = (comparison.sliderPercentage) + "%";
+                        comparison.slider.style.left = comparison.sliderPercentage + "%";
+                        comparison.slider.style.left = (comparison.imgOverlay.offsetWidth) - (comparison.slider.offsetWidth / 2) + "px";
+                        var x = comparison.slider.style.left.replace("px", "");
+                        // Disable/Enable left text
+                        if (x < (comparison.leftTxt.getBoundingClientRect().left + comparison.leftTxt.offsetWidth)) {
+                            comparison.leftTxt.style.opacity = 0;
+                        } else {
+                            comparison.leftTxt.style.opacity = 1;
+                        }
+
+                        // Disable/Enable right text
+                        if (x > comparison.imgOverlay.parentElement.offsetWidth - (comparison.leftTxt.getBoundingClientRect().left + comparison.rightTxt.offsetWidth)) {
+                            comparison.rightTxt.style.opacity = 0;
+                        } else {
+                            comparison.rightTxt.style.opacity = 1;
+                        }
+
+                    }, 0);
+                });
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
