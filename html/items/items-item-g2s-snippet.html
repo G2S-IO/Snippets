@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head></head>
+
+<body>
+
+    <snippet-template tag="" title="This is the title" descripsion="This is the descripsion area" img="https://g2s.io/imgs/img.jpg" href="">
+    </snippet-template>
+
+    <!-- Item -->
+    <div class="g2s-item-col" data-tag="{{tag}}" data-hide-on-page="{{href}}" draggable="false">
+        <div class="g2s-item-container">
+            <a href="{{href}}">
+                <div class="g2s-item">
+                    <div class="g2s-item-img img-pos-center img-fit-cover">
+                        <img src="{{img}}" alt="auto" draggable="false" auto-webp="true" loading="lazy">
+                    </div>
+                    <div class="g2s-item-body">
+                        <h3 g2s-remove-empty="this">{{title}}</h3>
+                        <p g2s-remove-empty="this">{{descripsion}}</p>
+                    </div>
+                    <div class="g2s-item-footer">
+                        <span g2s-remove-empty="parent">Read More &#10095;</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>
