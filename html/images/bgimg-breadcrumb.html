@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="snippet" content="snippets/head.html">
+
+    <style>
+        .bgimg-bc {
+            overflow: hidden;
+            position: relative;
+            padding: 64px 64px;
+            user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .bgimg-bc img {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            -o-object-fit: cover;
+            object-position: center;
+            -o-object-position: center;
+        }
+
+        .bgimg-bc-overlay {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            /* background-image: linear-gradient(to right, rgba(62, 108, 207, 0.96) 50%, rgba(62, 108, 207, 0.507)); */
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.4));
+        }
+
+        .bgimg-bc-txt-container {
+            margin: auto;
+            max-width: 1368px;
+            user-select: text;
+            -ms-user-select: text;
+            -moz-user-select: text;
+            -webkit-user-select: text;
+        }
+
+        .bgimg-bc h1,
+        .bgimg-bc h2,
+        .bgimg-bc h3,
+        .bgimg-bc h4,
+        .bgimg-bc h5,
+        .bgimg-bc h6,
+        .bgimg-bc p,
+        .bgimg-bc a {
+            margin: 16px 0;
+            position: relative;
+        }
+
+        .bgimg-bc-title {
+            font-size: 40px;
+            color: white;
+        }
+
+        .bgimg-bc-subtitle {
+            font-size: 30px;
+            color: white;
+        }
+
+        .bgimg-bc-description {
+            font-size: 20px;
+            color: white;
+        }
+
+        .bgimg-bc-align-center,
+        .bgimg-bc-align-center .bgimg-bc-description {
+            text-align: center;
+        }
+
+        .bgimg-bc-align-left,
+        .bgimg-bc-align-left .bgimg-bc-description {
+            text-align: left;
+        }
+
+        .bgimg-bc-align-right,
+        .bgimg-bc-align-right .bgimg-bc-description {
+            text-align: right;
+        }
+
+        .bgimg-bc ul {
+            list-style: none;
+            position: relative;
+            padding: 10px 16px 10px 6px;
+
+            user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .bgimg-bc ul li {
+            font-size: 18px;
+            display: inline;
+            color: lightgray;
+            user-select: text;
+            -ms-user-select: text;
+            -moz-user-select: text;
+            -webkit-user-select: text;
+        }
+
+        .bgimg-bc ul li+li:before {
+            padding: 0 16px;
+            color: lightgray;
+            content: "/";
+        }
+
+        .bgimg-bc ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .bgimg-bc ul li a:hover {
+            color: rgb(233, 230, 230);
+        }
+
+        @media screen and (max-width: 700px) {
+            .bgimg-bc {
+                padding: 64px 16px;
+            }
+
+            .bgimg-bc-title {
+                font-size: 30px;
+                color: white;
+            }
+
+            .bgimg-bc-subtitle {
+                font-size: 20px;
+                color: white;
+            }
+
+            .bgimg-bc-description {
+                font-size: 16px;
+                color: white;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="bgimg-bc bgimg-bc-align-left">
+        <img src="https://g2s.io/imgs/bgimg.jpg" alt="auto" auto-webp="true">
+        <div class="bgimg-bc-overlay"></div>
+        <div class="bgimg-bc-txt-container">
+            <h3 class="bgimg-bc-subtitle">
+                Subtitle
+            </h3>
+            <h2 class="bgimg-bc-title">
+                Title
+            </h2>
+            <ul>
+                <li><a href="#0">Home</a></li>
+                <li><a href="#0">Services</a></li>
+                <li>Services</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
