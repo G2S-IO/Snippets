@@ -366,6 +366,15 @@
         </div>
 
     </footer>
+    
+    <script>
+        var d = new Date();
+        var dates = document.querySelectorAll(".date-year");
+        for (var i = 0; i < dates.length; i++) {
+            var e = dates[i];
+            e.innerHTML = d.getFullYear();
+        }
+    </script>
 
 </body>
 
