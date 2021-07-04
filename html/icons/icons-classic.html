@@ -17,7 +17,7 @@
         .g2s-icons {
             box-sizing: border-box;
             height: auto;
-            padding: 16px 0;
+            padding: 6px 0;
             background-color: transparent;
             user-select: none;
             -ms-user-select: none;
@@ -56,7 +56,7 @@
 
         /* Padding main container */
         .g2s-icons a .container {
-            padding: 16px;
+            padding: 16px 0;
         }
 
         /* Divider (horizontal) */
@@ -80,9 +80,9 @@
         }
 
         /* Icon */
-        .g2s-icons .g2s-icon {
-            /* width: 33.33%; */
-        }
+        /* .g2s-icons .g2s-icon {
+            width: 33.33%;
+        } */
 
         .g2s-icons.h .g2s-icon {
             text-align: center;
@@ -98,12 +98,12 @@
         .g2s-icon .icon-container span {
             margin: auto;
             font-size: 30px;
-            color: #3070C0;
+            color: #555D60;
         }
 
         /* Icon style hover */
         .g2s-icon[href]:hover .icon-container span {
-            color: #3070C0;
+            color: #555D60;
         }
 
         /* Icon container (parent) */
@@ -160,14 +160,18 @@
         .g2s-icon .txt-container span {
             display: block;
             color: black;
-            margin: 1em 0;
+            margin: 6px;
             font-size: 16px;
-            line-height: 0.5;
+            line-height: 1.5;
             text-decoration: none;
         }
 
+        .g2s-icon .txt-container span b {
+            line-height: 0;
+        }
+
         .g2s-icon[href] :hover .txt-container span {
-            color: #3E6DCF;
+            color: #555D60;
         }
 
         @media screen and (max-width: 1300px) {
