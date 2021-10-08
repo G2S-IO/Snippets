@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <style>
+        .icons {
+            display: block;
+            padding: 16px 0;
+        }
+
+        .icons a {
+            margin: 16px 0;
+            display: flex;
+        }
+
+        .icons.divider a {
+            margin: 0;
+            padding: 24px 0;
+            border-bottom: 1px solid rgb(230, 230, 230);
+        }
+
+        .icons.divider.light a {
+            margin: 0;
+            padding: 24px 0;
+            border-bottom: 1px solid gray;
+        }
+
+        .icons a span {
+            margin: 0;
+            flex: 1 2 100%;
+            color: #333333;
+            text-align: left;
+            align-self: center;
+        }
+
+        .icons a[href]:hover span {
+            color: #555555;
+        }
+
+        .icons.light a span {
+            color: white;
+        }
+
+        .icons.light a[href]:hover span {
+            color: rgb(212, 212, 212);
+        }
+
+        .icons a :first-child {
+            flex: 1 1 50px;
+            text-align: center;
+            font-size: 26px;
+            padding-right: 16px;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="icons divider">
+        <a href="#0">
+            <span class="material-icons-round">phone</span>
+            <span>01234 567 890</span>
+        </a>
+        <a href="#0">
+            <span class="material-icons-round">phone_iphone</span>
+            <span>+44 123 456 7890</span>
+        </a>
+        <a href="#0">
+            <span class="material-icons-round">email</span>
+            <span>you@youremail.com</span>
+        </a>
+        <a>
+            <span class="material-icons-round">home</span>
+            <span>Street Address, City, Town Postcode, Country</span>
+        </a>
+    </div>
+
+</body>
+
+</html>
