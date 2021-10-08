@@ -7,12 +7,11 @@
     <style>
         .icons {
             display: block;
-            padding: 16px 0;
         }
 
         .icons a {
-            margin: 16px 0;
             display: flex;
+            margin: 16px 0;
         }
 
         .icons.divider a {
@@ -27,11 +26,12 @@
             border-bottom: 1px solid gray;
         }
 
-        .icons a span {
+        .icons a span, .icons a div {
             margin: 0;
             flex: 1 2 100%;
-            color: #333333;
+            font-size: 16px;
             text-align: left;
+            color: #333333;
             align-self: center;
         }
 
@@ -47,10 +47,10 @@
             color: rgb(212, 212, 212);
         }
 
-        .icons a :first-child {
+        .icons a>span:first-child {
             flex: 1 1 50px;
-            text-align: center;
             font-size: 26px;
+            text-align: center;
             padding-right: 16px;
             user-select: none;
             -moz-user-select: none;
@@ -63,7 +63,7 @@
 
 <body>
 
-    <div class="icons divider">
+    <div class="icons">
         <a href="#0">
             <span class="material-icons-round">phone</span>
             <span>01234 567 890</span>
@@ -79,6 +79,37 @@
         <a>
             <span class="material-icons-round">home</span>
             <span>Street Address, City, Town Postcode, Country</span>
+        </a>
+    </div>
+    
+    <div class="icons divider">
+        <a href="#0">
+            <span class="material-icons-round">phone</span>
+            <div>
+                <span><b>Phone</b></span>
+                <span>01234 567 890</span>
+            </div>
+        </a>
+        <a href="#0">
+            <span class="material-icons-round">phone_iphone</span>
+            <div>
+                <span><b>Mobile</b></span>
+                <span>(+44) 123 456 7890</span>
+            </div>
+        </a>
+        <a href="#0">
+            <span class="material-icons-round">email</span>
+            <div>
+                <span><b>Email</b></span>
+                <span>you@youremail.com</span>
+            </div>
+        </a>
+        <a>
+            <span class="material-icons-round">home</span>
+            <div>
+                <span><b>Address</b></span>
+                <span>Street Address, City, Town Postcode, Country</span>
+            </div>
         </a>
     </div>
 
