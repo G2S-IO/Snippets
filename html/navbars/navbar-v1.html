@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+  
+  <style>
+    /* Navbar */
+    .navbar {
+        z-index: 100;
+        display: flex;
+        flex-wrap: wrap;
+        user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* Navbar container */
+    .navbar>div {
+        padding: 0;
+        width: 100%;
+        display: flex;
+        margin: 0 auto;
+        max-width: 1400px;
+    }
+
+    @media screen and (max-width: 1440px) {
+        .navbar>div {
+            margin: auto;
+            max-width: 90%;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .navbar>div {
+            max-width: none;
+        }
+    }
+
+    /* Menu container */
+    .navbar>div>div {
+        padding: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        align-self: center;
+    }
+
+    /* Top Navbar */
+    .navbar.top {
+        height: 60px;
+        background-color: #F7F7F7;
+    }
+
+    /* Top Navbar right menu */
+    .navbar.top .right {
+        margin-left: auto;
+        padding: 0 1rem;
+    }
+
+    /* Top Navbar gap */
+    .navbar.top>div>div {
+        gap: 1.3rem;
+    }
+
+    /* Main Navbar */
+    .navbar.main {
+        top: 0;
+        height: 80px;
+        position: sticky;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(68, 68, 68, 0.1), 0 6px 30px 0 rgba(68, 68, 68, 0.1);
+    }
+
+    /* Logo image */
+    .navbar.main img {
+        height: 60px;
+        align-self: center;
+        padding-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    /* Link Separator top nav */
+    .navbar.top>div>div {
+        gap: 1px;
+        background-color: lightgrey;
+    }
+
+    /* Link Separator top nav right */
+    .navbar.top .right {
+        gap: 1rem;
+        background-color: transparent;
+    }
+
+    /* Link Separator main nav */
+    .navbar.main>div>div {
+        gap: 1px;
+        background-color: #f1f1f1;
+    }
+
+    /* Links */
+    .navbar>div>div a {
+        margin: 0;
+        padding: 0 1rem;
+        gap: .5rem;
+        display: flex;
+        font-size: .8rem;
+        align-self: center;
+        font-weight: lighter;
+        cursor: default;
+        position: relative;
+        background-color: #F7F7F7;
+    }
+
+    /* Links hover */
+    .navbar>div>div a:hover,
+    .navbar>div>div a.active {
+        color: steelblue;
+    }
+
+    /* Link hover on href or onclick */
+    .navbar>div>div a:hover[href],
+    .navbar>div>div a:hover[onclick] {
+        cursor: pointer;
+    }
+
+    /* Link Icon */
+    .navbar>div>div a span {
+        margin: 0;
+        padding: 0;
+        width: 18px;
+        height: 18px;
+        font-size: 1rem;
+        align-self: center;
+        transition: .3s;
+        color: steelblue;
+    }
+
+    /* Link Icon Hover */
+    .navbar>div>div a:hover span {
+        transform: scale(1.3);
+    }
+
+    /* Main navbar links */
+    .navbar.main>div>div a {
+        height: 100%;
+        transition: .3s;
+        font-size: .9rem;
+        padding: .3rem 1rem;
+        background-color: white;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    /* Top right icons */
+    .navbar.top .right>div {
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+        transition: .3s;
+        align-self: center;
+        justify-content: center;
+        background-color: #F7F7F7;
+    }
+
+    /* Top right icons hover */
+    .navbar.top .right>div:hover {
+        transform: scale(1.4);
+    }
+
+    /* Icon image */
+    .navbar.top .right>div img {
+        height: 16px;
+        align-self: center;
+        justify-content: center;
+    }
+
+    /* Main nav menu right */
+    .navbar.main .right {
+        margin-left: auto;
+    }
+
+    .navbar.main .right a {
+        padding: .3rem 1rem;
+    }
+
+
+    /* #region Underline Effect */
+
+    /* Underline Effect | Middle */
+    .navbar.main .link-fx-center a:before {
+        content: "";
+        bottom: 0;
+        left: 1rem;
+        height: 2px;
+        position: absolute;
+        width: calc(100% - 2rem);
+        background-color: steelblue;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Underline Effect | Middle hover */
+    .navbar.main .link-fx-center a:hover:before,
+    .navbar.main .link-fx-center a.active:before {
+        visibility: visible;
+        transform: scaleX(1);
+    }
+
+    /* Underline Effect | Middle active */
+    .navbar.main .link-fx-center a.active:hover:before {
+        transform: scaleX(1.3);
+    }
+
+    /* Underline Effect | Left */
+    .navbar.main .link-fx-left a:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 1rem;
+        background-color: steelblue;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Underline Effect | Left hover */
+    .navbar.main .link-fx-left a:hover:before,
+    .navbar.main .link-fx-left a.active:before {
+        visibility: visible;
+        width: calc(100% - 2rem);
+    }
+
+    /* Underline Effect | Left active */
+    .navbar.main .link-fx-left a.active:hover:before {
+        transform: scaleX(1.3);
+    }
+
+    /* Underline Effect | Right */
+    .navbar.main .link-fx-right a:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        right: 1rem;
+        background-color: steelblue;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Underline Effect | Right hover */
+    .navbar.main .link-fx-right a:hover:before,
+    .navbar.main .link-fx-right a.active:before {
+        visibility: visible;
+        width: calc(100% - 2rem);
+    }
+
+    /* Underline Effect | Right active */
+    .navbar.main .link-fx-right a.active:hover:before {
+        transform: scaleX(1.3);
+    }
+
+    /* #endregion Underline Effect */
+
+
+    /* #region | Screen Size */
+
+    @media screen and (max-width: 1300px) {
+        .navbar.top .left {
+            display: none;
+        }
+
+        .navbar.top .right {
+            margin: auto;
+        }
+
+        .navbar.top .right {
+            gap: 3rem;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .navbar.main .left {
+            display: none;
+        }
+
+        .navbar.main .right {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .navbar.main .right>a {
+            flex: 1 1;
+            text-align: center;
+            justify-self: center;
+            justify-content: center;
+        }
+
+        .navbar.main .right>a span {
+            text-align: center;
+            justify-self: center;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .navbar.top {
+            display: none;
+        }
+
+        .navbar.main img {
+            margin: 0;
+        }
+
+
+    }
+
+    /* #endregion | Mobile screen size */    
+  </style>
+  
+</head>
+
+<body>
+
+    <!-- Top navbar -->
+    <div class="navbar top">
+        <div class="clamp-width">
+            <div class="left">
+                <a><span class="material-icons-round">schedule</span>Hours 09:00 - 17:00</a>
+                <a href="#0"><span class="material-icons-round">phone</span>01234 567 890</a>
+                <a href="#0"><span class="material-icons-round">phone_iphone</span>(+44) 1234 567 890</a>
+                <a href="#0"><span class="material-icons-round">email</span>you@youremail.com</a>
+            </div>
+            <div class="right">
+                <div><img src="https://g2s.io/imgs/icons/linkedin.png"></div>
+                <div><img src="https://g2s.io/imgs/icons/facebook.png"></div>
+                <div><img src="https://g2s.io/imgs/icons/twitter.png"></div>
+                <div><img src="https://g2s.io/imgs/icons/instagram.png"></div>
+                <div><img src="https://g2s.io/imgs/icons/whatsapp.png"></div>
+                <div><img src="https://g2s.io/imgs/icons/pinterest.png"></div>
+                <div><img src="https://g2s.io/imgs/icons/icon-youtube.png"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main navbar -->
+    <div class="navbar main">
+        <div class="clamp-width">
+
+            <img src="https://g2s.io/imgs/bgimg.jpg">
+
+            <div class="left link-fx-center">
+                <a href="#0"><span class="material-icons-round">home</span>Home</a>
+                <a href="#0">Services</a>
+                <a href="#0">About Us</a>
+                <a href="#0">Why Us</a>
+                <a href="#0">Projects</a>
+                <a href="#0">Galleries</a>
+                <a href="#0">Contact</a>
+            </div>
+
+            <div class="right">
+                <a href="#0"><span class="material-icons-round">phone</span></a>
+                <a href="#0"><span class="material-icons-round">phone_iphone</span></a>
+                <a href="#0"><span class="material-icons-round">email</span></a>
+                <a href="#0"><span class="material-icons-round">menu</span></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
