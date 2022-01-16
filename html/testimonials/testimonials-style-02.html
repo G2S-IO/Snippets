@@ -525,10 +525,10 @@
         */
         function scrollTestimonialsIntoView(el) {
             // Standard js version (not supported in safari)
-            el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+            // el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
 
             // Polyfill version for Safari
-            // seamless.elementScrollIntoView(el, { behavior: "smooth", block: "center", inline: "center", });
+            seamless.elementScrollIntoView(el, { behavior: "smooth", block: "center", inline: "center", });
         }
 
         /**
