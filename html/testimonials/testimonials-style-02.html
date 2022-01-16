@@ -36,26 +36,7 @@
             user-select: none;
             position: relative;
             box-sizing: border-box;
-        }
-
-        .testimonials .leftFade {
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 150px;
-            position: absolute;
-            pointer-events: none;
-            background-image: linear-gradient(to right, white, rgba(255, 255, 255, 0));
-        }
-
-        .testimonials .rightFade {
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 150px;
-            position: absolute;
-            pointer-events: none;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+            background-color: inherit;
         }
 
         .testimonials-container {
@@ -70,6 +51,7 @@
             /* Hide scrollbar Firefox */
             scrollbar-width: none;
             pointer-events: none;
+            background-color: inherit;
         }
 
         /* Hide scrollbar for Chrome, Safari and Opera */
@@ -83,6 +65,7 @@
             padding: 0 100px;
             max-width: 700px;
             position: relative;
+            background-color: inherit;
         }
 
         .testimonials .divider {
@@ -123,7 +106,7 @@
             align-content: center;
             justify-content: center;
             position: absolute;
-            background-color: white;
+            background-color: inherit;
             transform: translateX(-50%) translateY(-50%);
         }
 
@@ -157,6 +140,7 @@
             text-align: center;
             position: relative;
             border: 1px solid lightgray;
+            background-color: inherit;
         }
 
         .testimonial .txt p {
@@ -178,6 +162,7 @@
         .testimonial .txt .quote-start {
             top: 0;
             left: 0;
+            z-index: 2;
             font-size: 2rem;
             margin: -32px 0 0 -42px;
             position: absolute;
@@ -187,46 +172,44 @@
         }
 
         .testimonial .txt .quote-end {
-            bottom: 0;
             right: 0;
-            margin: 0;
+            bottom: 0;
+            z-index: 2;
             font-size: 2rem;
+            margin: 0 -42px -32px 0;
             position: absolute;
             color: lightgray;
-            margin: 0 -42px -32px 0;
         }
 
-        .read-more-container {
-            height: 0;
-            margin: 0;
-            flex-basis: 100%;
-            display: inline;
-            background-color: blue;
-        }
-
-        .testimonials .txt-more {
-            margin: 0;
+        .testimonial .read-more-container {
+            gap: 0;
             left: 50%;
-            padding: 3px 6px;
-            font-size: .7rem;
+            margin: 0;
+            z-index: 2;
+            padding: .3rem .3rem;
+            display: flex;
+            overflow: visible;
             position: absolute;
-            color: steelblue;
-            background-color: white;
-            transform: translateX(-50%) translateY(-50%);
-            text-transform: uppercase;
-            text-align: center;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            background-color: inherit;
             cursor: pointer;
             pointer-events: all;
-            display: inline-block;
+            transform: translateX(-50%) translateY(-50%);
         }
 
-        .testimonials .txt-more span {
+        .testimonial .read-more-container span{
             margin: 0;
+            padding: 0;
             font-size: .7rem;
-            text-align: center;
+            align-self: center;
+            justify-self: center;
             color: steelblue;
-            position: absolute;
-            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .read-more-container :nth-child(2){
             -webkit-transform: rotate(90deg);
             -moz-transform: rotate(90deg);
             -o-transform: rotate(90deg);
@@ -234,7 +217,7 @@
             transform: rotate(90deg);
         }
 
-        .testimonials .txt-more span.less {
+        .read-more-container :nth-child(2).less {
             -webkit-transform: rotate(-90deg);
             -moz-transform: rotate(-90deg);
             -o-transform: rotate(-90deg);
@@ -245,22 +228,27 @@
         .testimonial-footer {
             display: flex;
             position: relative;
+            background-color: inherit;
+            overflow: visible;
         }
 
         .testimonial .img {
-            margin-top: -1rem;
-            margin-left: 1rem;
+            z-index: 3;
             width: 100px;
             height: 100px;
+            margin-top: -1rem;
+            margin-left: 1rem;
             border-radius: 50%;
-            border: 1px solid lightgray;
-            background-color: white;
             display: flex;
             overflow: hidden;
             position: relative;
+            background-color: inherit;
+            border: 1px solid lightgray;
         }
 
         .testimonial .img img {
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             position: absolute;
@@ -276,8 +264,8 @@
 
         .testimonial .title {
             gap: .4rem;
-            padding-left: 1rem;
             display: flex;
+            padding-left: 1rem;
             flex-direction: column;
             align-content: center;
             justify-content: center;
@@ -297,13 +285,12 @@
         }
 
         .testimonials-btns {
-            gap: 1rem;
             display: flex;
             justify-content: center;
             padding-bottom: 2rem;
         }
 
-        .testimonials-btns div {
+        .testimonials-btns a {
             width: 32px;
             height: 32px;
             display: flex;
@@ -322,7 +309,7 @@
         }
 
         .testimonials-btns>span {
-            margin: auto 0;
+            margin: auto 1rem;
             font-weight: lighter;
             font-style: italic;
             font-size: .9rem;
@@ -421,8 +408,9 @@
                     <span class="mid">★</span>
                     <span class="small">★</span>
                 </div>
-                <div class="read-more-container">
-                    <span class="txt-more" onclick="testimonialReadMore(this)">Read More<br><span>&#10095;</span></span>
+                <div class="read-more-container" onclick="testimonialReadMore(this)">
+                    <span>Read More</span>
+                    <span>&#10095;</span>
                 </div>
                 <div class="testimonial-footer">
                     <div class="img">
@@ -453,8 +441,9 @@
                     <span class="mid">★</span>
                     <span class="small">★</span>
                 </div>
-                <div class="read-more-container">
-                    <span class="txt-more" onclick="testimonialReadMore(this)">Read More<br><span>&#10095;</span></span>
+                <div class="read-more-container" onclick="testimonialReadMore(this)">
+                    <span>Read More</span>
+                    <span>&#10095;</span>
                 </div>
                 <div class="testimonial-footer">
                     <div class="img">
@@ -483,8 +472,9 @@
                     <span class="mid">★</span>
                     <span class="small">★</span>
                 </div>
-                <div class="read-more-container">
-                    <span class="txt-more" onclick="testimonialReadMore(this)">Read More<br><span>&#10095;</span></span>
+                <div class="read-more-container" onclick="testimonialReadMore(this)">
+                    <span>Read More</span>
+                    <span>&#10095;</span>
                 </div>
                 <div class="testimonial-footer">
                     <div class="img">
@@ -500,9 +490,6 @@
 
         </div>
 
-        <div class="leftFade"></div>
-        <div class="rightFade"></div>
-
         <div class="testimonials-btns">
             <div onclick="previousTestimonial(this)"><span class="material-icons">arrow_back</span></div>
             <span>0 / 0</span>
@@ -512,31 +499,35 @@
     </div>
     
     <script>
-        /**
-         *  Initialise testimonial buttons
-        */
-        document.querySelectorAll(".testimonials").forEach(container => {
-            var ts = container.querySelectorAll(".testimonial");
-            if (ts.length > 1) {
-                container.querySelector(".testimonials-btns>span").innerHTML = `1 / ${ts.length}`;
-            } else {
-                container.querySelector(".testimonials-btns").style.display = "none";
-            }
-        });
+        document.addEventListener("DOMContentLoaded", function () {
 
-        /**
-         * Initialise testimonial read more buttons
-        */
-        document.querySelectorAll(".testimonial p").forEach(p => {
-            if (p.clientHeight === p.scrollHeight) {
-                p.closest(".testimonial").querySelector(".read-more-container").style.display = "none";
-            }
+            /**
+             *  Initialise testimonial buttons
+            */
+            document.querySelectorAll(".testimonials").forEach(container => {
+                var ts = container.querySelectorAll(".testimonial");
+                if (ts.length > 1) {
+                    container.querySelector(".testimonials-btns>span").innerHTML = `1 / ${ts.length}`;
+                } else {
+                    container.querySelector(".testimonials-btns").style.display = "none";
+                }
+            });
+
+            /**
+             * Initialise testimonial read more buttons
+            */
+            document.querySelectorAll(".testimonial p").forEach(p => {
+                if (p.clientHeight >= p.scrollHeight) {
+                    p.closest(".testimonial").querySelector(".read-more-container").style.display = "none";
+                }
+            });
         });
 
         /**
          * On previous testimonial button
         */
         function previousTestimonial(btn) {
+            testimonialReadMoreCloseAll(btn);
             var parent = btn.closest(".testimonials");
             var current = parseInt(parent.getAttribute("data-current"));
             var ts = parent.querySelectorAll(".testimonial");
@@ -550,6 +541,7 @@
          * On next testimonial button
         */
         function nextTestimonial(btn) {
+            testimonialReadMoreCloseAll(btn);
             var parent = btn.closest(".testimonials");
             var current = parseInt(parent.getAttribute("data-current"));
             var ts = parent.querySelectorAll(".testimonial");
@@ -578,11 +570,28 @@
             var txt = parent.querySelector("p");
             if (txt.classList.contains("caplines")) {
                 txt.classList.remove("caplines");
-                btn.innerHTML = "Read Less<br><span class='less'>&#10095;</span>";
+                btn.querySelector(".read-more-container :nth-child(1)").innerHTML = "Read Less";
+                btn.querySelector(".read-more-container :nth-child(2)").classList.add("less");
             } else {
                 txt.classList.add("caplines");
-                btn.innerHTML = "Read More<br><span>&#10095;</span>";
+                btn.querySelector(".read-more-container :nth-child(1)").innerHTML = "Read More";
+                btn.querySelector(".read-more-container :nth-child(2)").classList.remove("less");
             }
+        }
+
+        function testimonialReadMoreCloseAll(btn) {
+            var parent = btn.closest(".testimonials");
+            parent.querySelectorAll("p").forEach(txt => {
+                if (!txt.classList.contains("caplines")) {
+                    txt.classList.add("caplines");
+                    var txtBtn = txt.closest(".testimonial");
+                    if (txtBtn) {
+                        txtBtn.querySelector(".read-more-container :nth-child(1)").innerHTML = "Read More";
+                        txtBtn.querySelector(".read-more-container :nth-child(2)").classList.remove("less");
+                    }
+
+                }
+            });
         }
     </script>
 
